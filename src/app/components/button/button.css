@@ -1,0 +1,58 @@
+.judge-button {
+  align-items: center;
+  background: #fac738;
+  border: 0;
+  border-radius: 8px;
+  box-shadow: 0 0 15px 0 rgb(250 199 56 / 20%);
+  color: #0a0a0a;
+  column-gap: 8px;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  justify-content: center;
+  line-height: 20px;
+  min-height: 36px;
+  padding: 8px 24px;
+  text-align: center;
+  transition:
+    transform 120ms ease,
+    box-shadow 120ms ease;
+}
+
+.judge-button:hover:not(:disabled) {
+  box-shadow: 0 0 18px 0 rgb(250 199 56 / 28%);
+  transform: translateY(-1px);
+}
+
+.judge-button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.judge-button:focus-visible {
+  outline: 2px solid #0a0a0a;
+  outline-offset: 2px;
+}
+
+.judge-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.judge-button__icon {
+  height: 10px;
+  width: 14px;
+}
+
+.judge-button__icon svg {
+  display: block;
+  fill: currentcolor;
+  height: 100%;
+  width: 100%;
+}
+
+.judge-button__label {
+  white-space: nowrap;
+}
