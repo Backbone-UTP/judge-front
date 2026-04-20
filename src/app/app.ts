@@ -2,11 +2,10 @@ import { Component, computed, signal, effect } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 import { ApplicationService } from './application';
-import { Button } from './components/button/button';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Button],
+  imports: [RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
