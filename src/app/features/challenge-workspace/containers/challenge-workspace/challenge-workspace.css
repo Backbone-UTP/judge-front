@@ -3,7 +3,11 @@
   min-height: 100vh;
   background: #0f0f10;
   color: #f3f3f3;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
 }
 
 * {
@@ -62,13 +66,29 @@
   border-bottom-color: #facc15;
 }
 
-.language-tab span {
-  display: inline-block;
-  padding: 4px 10px;
+.language-tab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.language-tab label {
+  font-size: 13px;
+  color: #b6b6b8;
+}
+
+.language-tab select {
   border: 1px solid #2a2a2a;
   border-radius: 6px;
+  background: #0d0d0f;
   color: #d4d4d4;
+  padding: 4px 10px;
   font-size: 13px;
+}
+
+.language-tab select:focus-visible {
+  outline: 2px solid #facc15;
+  outline-offset: 1px;
 }
 
 .workspace-main {
@@ -93,6 +113,10 @@
   background: #0d0d0f;
 }
 
+.editor-content {
+  height: 100%;
+}
+
 .problem-content h1 {
   margin-bottom: 12px;
   font-size: 1.8rem;
@@ -112,8 +136,7 @@
   background: #17171a;
 }
 
-.example-card pre,
-.editor-content pre {
+.example-card pre {
   margin-top: 8px;
   white-space: pre-wrap;
   word-break: break-word;

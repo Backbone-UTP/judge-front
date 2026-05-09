@@ -1,0 +1,31 @@
+<div class="code-editor">
+  <div #lineGutter class="line-gutter" aria-hidden="true">
+    @for (lineNumber of lineNumbers(); track lineNumber) {
+      <div class="line-number" [class.line-number--active]="lineNumber === activeLine()">
+        {{ lineNumber }}
+      </div>
+    }
+  </div>
+
+  <div class="editor-surface">
+    <div
+      class="editor-active-line"
+      [style.transform]="'translateY(' + activeLineOffset() + 'px)'"
+    ></div>
+    <pre class="editor-highlight" [style.transform]="'translateY(-' + scrollTop() + 'px)'">
+<code [innerHTML]="highlightedCode()"></code></pre>
+    <textarea
+      class="editor-input"
+      [value]="code()"
+      spellcheck="false"
+      autocapitalize="off"
+      autocomplete="off"
+      autocorrect="off"
+      aria-label="Code editor"
+      (input)="onCodeInput($event)"
+      (click)="onCursorChange($event)"
+      (keyup)="onCursorChange($event)"
+      (scroll)="onScroll($event)"
+    ></textarea>
+  </div>
+</div>
