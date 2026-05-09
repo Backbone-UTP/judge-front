@@ -36,8 +36,9 @@ export const challengeStarterCode: Record<ChallengeLanguage, string> = {
   for (let index = 0; index < nums.length; index += 1) {
     const complement = target - nums[index];
 
-    if (seen.has(complement)) {
-      return [seen.get(complement)!, index];
+    const matchedIndex = seen.get(complement);
+    if (matchedIndex !== undefined) {
+      return [matchedIndex, index];
     }
 
     seen.set(nums[index], index);

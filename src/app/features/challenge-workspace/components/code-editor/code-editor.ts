@@ -71,12 +71,20 @@ export class CodeEditor {
     const escapedCode = this.escapeHtml(code);
     const keywordPattern = this.getKeywordPattern(language);
     const commentPattern = language === 'python' ? /(#.*)$/gm : /(\/\/.*)$/gm;
+    const protectedTokens: string[] = [];
+    let parsedCode = escapedCode.replace(/(["'`](?:\\.|(?!\1).)*\1)/g, (value) =>
+      this.createTokenPlaceholder(value, 'token-string', protectedTokens),
+    );
 
-    return escapedCode
-      .replace(commentPattern, '<span class="token-comment">$1</span>')
-      .replace(/(["'`].*?["'`])/g, '<span class="token-string">$1</span>')
+    parsedCode = parsedCode.replace(commentPattern, (value) =>
+      this.createTokenPlaceholder(value, 'token-comment', protectedTokens),
+    );
+
+    parsedCode = parsedCode
       .replace(/\b(\d+)\b/g, '<span class="token-number">$1</span>')
       .replace(keywordPattern, '<span class="token-keyword">$1</span>');
+
+    return parsedCode.replace(/@@TOKEN_(\d+)@@/g, (_, index) => protectedTokens[Number(index)]);
   }
 
   private getKeywordPattern(language: ChallengeLanguage): RegExp {
@@ -94,5 +102,15 @@ export class CodeEditor {
 
   private escapeHtml(value: string): string {
     return value.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;');
+  }
+
+  private createTokenPlaceholder(
+    value: string,
+    className: 'token-string' | 'token-comment',
+    tokenStorage: string[],
+  ): string {
+    const tokenIndex = tokenStorage.push(`<span class="${className}">${value}</span>`) - 1;
+
+    return `@@TOKEN_${tokenIndex}@@`;
   }
 }
