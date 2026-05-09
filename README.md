@@ -1,26 +1,35 @@
 # BackboneJudge
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.2.
+Frontend generado con [Angular CLI](https://github.com/angular/angular-cli) 21.2.2 (Angular 21, Vitest, Tailwind CSS v4).
+
+## Onboarding
+
+Para instalación local, MCP (Figma y Angular CLI en el repo; GitHub en Cursor vía UI o config global) y convenciones del repo, lee **[Guía de desarrollo local y MCP](docs/development-setup.md)**.
+
+Resumen rápido desde la raíz del proyecto:
+
+```bash
+npm install
+npm run start
+```
+
+Abre `http://localhost:4200/`. Otros comandos: `npm run build`, `npm run test -- --watch=false`, `npx tsc --noEmit -p tsconfig.app.json`. Detalle en la guía y en [`AGENTS.md`](AGENTS.md).
 
 ## Development server
 
-To start a local development server, run:
-
 ```bash
-ng serve
+npm run start
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Equivalente a `ng serve`. La app recarga al modificar los ficheros fuente.
 
 ## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
 
 ```bash
 ng generate component component-name
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Lista completa de esquemáticos:
 
 ```bash
 ng generate --help
@@ -28,32 +37,31 @@ ng generate --help
 
 ## Building
 
-To build the project run:
-
 ```bash
-ng build
+npm run build
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Los artefactos quedan en `dist/` (build optimizado en modo producción por defecto).
 
 ## Running unit tests
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+Tests con [Vitest](https://vitest.dev/) vía Angular CLI:
 
 ```bash
-ng test
+npm run test -- --watch=false
 ```
+
+Modo watch: `npm run test`.
 
 ## Running end-to-end tests
 
-For end-to-end (e2e) testing, run:
+Para e2e, Angular CLI no trae un framework por defecto. De momento no se encuentra en el scope de la v1 de este proyecto:
 
 ```bash
 ng e2e
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
 ## Additional Resources
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- [Angular CLI Overview](https://angular.dev/tools/cli)
+- [Angular CLI MCP](https://angular.dev/ai/mcp)

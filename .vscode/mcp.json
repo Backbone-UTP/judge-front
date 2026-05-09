@@ -1,9 +1,30 @@
 {
-  // For more information, visit: https://angular.dev/ai/mcp
+  // For Angular CLI MCP: https://angular.dev/ai/mcp
+  // Figma remote MCP: https://developers.figma.com/docs/figma-mcp-server/remote-server-installation/
+  // GitHub MCP (Cursor/VS Code): https://github.com/github/github-mcp-server
+  "inputs": [
+    {
+      "id": "github_pat",
+      "type": "promptString",
+      "password": true,
+      "description": "GitHub Personal Access Token (no se guarda en el repo)"
+    }
+  ],
   "servers": {
+    "figma": {
+      "type": "http",
+      "url": "https://mcp.figma.com/mcp"
+    },
     "angular-cli": {
       "command": "npx",
       "args": ["-y", "@angular/cli", "mcp"]
+    },
+    "github": {
+      "type": "http",
+      "url": "https://api.githubcopilot.com/mcp/",
+      "headers": {
+        "Authorization": "Bearer ${input:github_pat}"
+      }
     }
   }
 }
