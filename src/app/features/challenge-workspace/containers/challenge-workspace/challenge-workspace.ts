@@ -1,13 +1,9 @@
-import { Component, inject } from '@angular/core';
-
-import { CodeEditor } from '../../components/code-editor/code-editor';
-import { ChallengeWorkspaceState } from '../../state/challenge-workspace.state';
-import { challengeLanguageLabels, isChallengeLanguage } from '../../types/challenge.types';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-challenge-workspace',
   standalone: true,
-  imports: [CodeEditor],
+  imports: [],
   templateUrl: './challenge-workspace.html',
   styleUrl: './challenge-workspace.css',
 })
