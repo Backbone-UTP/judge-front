@@ -1,0 +1,53 @@
+:host {
+  display: block;
+  margin-top: 24px;
+}
+
+.example-heading {
+  margin: 0 0 12px;
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20px;
+  color: #ffffff;
+}
+
+.example-body {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  box-sizing: border-box;
+  padding: 11px 12px 12px 14px;
+  border-left: 2px solid #333333;
+  border-radius: 0 8px 8px 0;
+  background: #0a0a0a;
+}
+
+.example-line {
+  margin: 0;
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 19.5px;
+}
+
+.example-key {
+  color: #a3a3a3;
+}
+
+.example-gap {
+  color: #e0e0e0;
+}
+
+.example-value {
+  color: #ffffff;
+}
+
+.example-explanation-rest {
+  color: #e0e0e0;
+}

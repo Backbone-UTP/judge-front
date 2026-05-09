@@ -5,12 +5,8 @@
   "compilerOptions": {
     "outDir": "./out-tsc/spec",
     "rootDir": "./src/app",
-    "types": [
-      "vitest/globals"
-    ]
+    "resolveJsonModule": true,
+    "types": ["vitest/globals"]
   },
-  "include": [
-    "src/**/*.d.ts",
-    "src/**/*.spec.ts"
-  ]
+  "include": ["src/**/*.d.ts", "src/**/*.spec.ts"]
 }

@@ -1,0 +1,19 @@
+<div class="constraints-root">
+  <p class="constraints-heading">Constraints:</p>
+  <ul class="constraints-list">
+    @for (constraint of constraints(); track $index) {
+      <li class="constraint-item">
+        @switch (constraint.kind) {
+          @case ('boundedRange') {
+            <span class="constraint-code-pill">{{
+              constraint.lower + constraint.middle + constraint.upper
+            }}</span>
+          }
+          @case ('text') {
+            <span class="constraint-plain">{{ constraint.text }}</span>
+          }
+        }
+      </li>
+    }
+  </ul>
+</div>

@@ -1,0 +1,48 @@
+{
+  "title": "1. Two Sum",
+  "descriptionParagraphs": [
+    "Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.",
+    "You may assume that each input would have exactly one solution, and you may not use the same element twice.",
+    "You can return the answer in any order."
+  ],
+  "examples": [
+    {
+      "input": "nums = [2,7,11,15], target = 9",
+      "output": "[0,1]",
+      "explanation": "Because nums[0] + nums[1] == 9, we return [0, 1]."
+    },
+    {
+      "input": "nums = [3,2,4], target = 6",
+      "output": "[1,2]"
+    },
+    {
+      "input": "nums = [3,3], target = 6",
+      "output": "[0,1]"
+    }
+  ],
+  "constraints": [
+    {
+      "kind": "boundedRange",
+      "lower": "2",
+      "middle": " <= nums.length <= ",
+      "upper": "10^4"
+    },
+    {
+      "kind": "boundedRange",
+      "lower": "-10^9",
+      "middle": " <= nums[i] <= ",
+      "upper": "10^9"
+    },
+    {
+      "kind": "boundedRange",
+      "lower": "-10^9",
+      "middle": " <= target <= ",
+      "upper": "10^9"
+    },
+    {
+      "kind": "text",
+      "text": "Only one valid answer exists."
+    }
+  ],
+  "editorSnippet": "var twoSum = function(nums, target) {\n    const map = new Map();\n            \n    for (let i = 0; i < nums.length; i++) {\n        const complement = target - nums[i];\n            \n        if (map.has(complement)) {\n            return [map.get(complement), i];\n        }\n        map.set(nums[i], i);\n    }\n        \n    return [];\n};"
+}

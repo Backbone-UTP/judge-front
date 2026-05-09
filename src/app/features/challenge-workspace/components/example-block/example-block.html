@@ -1,0 +1,17 @@
+<p class="example-heading">Example {{ index() }}:</p>
+<div class="example-body">
+  <p class="example-line">
+    <span class="example-key">Input:</span><span class="example-gap" aria-hidden="true"> </span
+    ><span class="example-value">{{ example().input }}</span>
+  </p>
+  <p class="example-line">
+    <span class="example-key">Output:</span><span class="example-gap" aria-hidden="true"> </span
+    ><span class="example-value">{{ example().output }}</span>
+  </p>
+  @if (trimmedExplanation()) {
+    <p class="example-line">
+      <span class="example-key">Explanation:</span>
+      <span class="example-explanation-rest">{{ ' ' + trimmedExplanation() }}</span>
+    </p>
+  }
+</div>
