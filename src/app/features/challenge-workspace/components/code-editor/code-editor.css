@@ -5,48 +5,47 @@
 
 .code-editor {
   display: grid;
-  grid-template-columns: 56px 1fr;
+  grid-template-columns: 48px 1fr;
   height: 100%;
-  border: 1px solid #2a2a2a;
-  border-radius: 8px;
   overflow: hidden;
-  background: #0f172a;
+  background: #0a0a0a;
 }
 
 .line-gutter {
   overflow: hidden;
-  background: #0b1220;
-  border-right: 1px solid #1e293b;
-  color: #64748b;
+  background: #0a0a0a;
+  border-right: 1px solid #333333;
+  color: #525252;
   font-family: 'JetBrains Mono', 'Fira Code', Consolas, 'Courier New', monospace;
-  padding: 12px 0;
+  padding: 16px 13px 16px 0;
 }
 
 .line-number {
   height: 24px;
   line-height: 24px;
   text-align: right;
-  padding-right: 12px;
-  font-size: 13px;
+  font-size: 12px;
 }
 
 .line-number--active {
-  color: #facc15;
+  color: #fac738;
 }
 
 .editor-surface {
   position: relative;
   overflow: hidden;
-  background: #0f172a;
+  background: #0a0a0a;
 }
 
 .editor-active-line {
   position: absolute;
   left: 0;
   right: 0;
-  top: 12px;
+  top: 16px;
   height: 24px;
-  background: rgba(248, 250, 252, 0.08);
+  background: rgba(255, 255, 255, 0.05);
+  border-left: 2px solid #fac738;
+  box-sizing: border-box;
   pointer-events: none;
 }
 
@@ -55,7 +54,7 @@
   position: absolute;
   inset: 0;
   margin: 0;
-  padding: 12px 16px;
+  padding: 16px;
   border: 0;
   resize: none;
   outline: none;
@@ -71,7 +70,7 @@
 
 .editor-highlight {
   pointer-events: none;
-  color: #e2e8f0;
+  color: #e0e0e0;
 }
 
 .editor-highlight code {
@@ -82,26 +81,26 @@
 .editor-input {
   background: transparent;
   color: transparent;
-  caret-color: #f8fafc;
+  caret-color: rgba(255, 255, 255, 0.8);
   overflow: auto;
 }
 
 .editor-input::selection {
-  background: rgba(56, 189, 248, 0.3);
+  background: rgba(255, 255, 255, 0.16);
 }
 
 :host ::ng-deep .token-keyword {
-  color: #c4b5fd;
+  color: #fac738;
 }
 
 :host ::ng-deep .token-string {
-  color: #86efac;
+  color: #ce9178;
 }
 
 :host ::ng-deep .token-number {
-  color: #fbbf24;
+  color: #b5cea8;
 }
 
 :host ::ng-deep .token-comment {
-  color: #64748b;
+  color: #6a9955;
 }
