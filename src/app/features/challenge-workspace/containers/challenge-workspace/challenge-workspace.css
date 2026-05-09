@@ -93,45 +93,6 @@
   background: #0d0d0f;
 }
 
-.problem-content h1 {
-  margin-bottom: 12px;
-  font-size: 1.8rem;
-}
-
-.problem-content p {
-  margin-bottom: 10px;
-  line-height: 1.5;
-  color: #d4d4d4;
-}
-
-.example-card {
-  margin-top: 14px;
-  padding: 12px;
-  border: 1px solid #2a2a2a;
-  border-radius: 8px;
-  background: #17171a;
-}
-
-.example-card pre,
-.editor-content pre {
-  margin-top: 8px;
-  white-space: pre-wrap;
-  word-break: break-word;
-  color: #d4d4d4;
-  font-size: 14px;
-  line-height: 1.45;
-}
-
-.problem-content ul {
-  margin-top: 8px;
-  padding-left: 20px;
-}
-
-.problem-content li {
-  margin-bottom: 6px;
-  color: #d4d4d4;
-}
-
 .workspace-footer {
   justify-content: flex-end;
   gap: 10px;
