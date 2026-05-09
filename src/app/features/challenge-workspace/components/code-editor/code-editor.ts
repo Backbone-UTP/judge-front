@@ -13,6 +13,7 @@ import { ChallengeLanguage } from '../../types/challenge.types';
 
 @Component({
   selector: 'app-code-editor',
+  standalone: true,
   imports: [],
   templateUrl: './code-editor.html',
   styleUrl: './code-editor.css',
