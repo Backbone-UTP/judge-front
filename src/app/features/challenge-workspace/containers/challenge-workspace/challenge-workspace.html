@@ -6,42 +6,44 @@
     </nav>
   </header>
 
-  <div class="workspace-toolbar">
-    <div class="problem-tabs">
-      <button class="tab active" type="button">Description</button>
-      <button class="tab" type="button">Submissions</button>
-      <button class="tab" type="button">Hints</button>
+    <div class="workspace-toolbar">
+        <div class="problem-tabs">
+            <button class="tab active" type="button">Description</button>
+            <button class="tab" type="button">Submissions</button>
+            <button class="tab" type="button">Hints</button>
+        </div>
+
+        <div class="language-tab">
+            <span>JavaScript</span>
+        </div>
     </div>
 
-    <div class="language-tab">
-      <label for="language-selector">Language</label>
-      <select
-        id="language-selector"
-        [value]="challengeWorkspaceState.selectedLanguage()"
-        (change)="onLanguageChange($event)"
-      >
-        @for (language of challengeWorkspaceState.languages; track language) {
-          <option [value]="language">{{ languageLabels[language] }}</option>
-        }
-      </select>
-    </div>
-  </div>
+    <main class="workspace-main">
+        <section class="workspace-panel workspace-problem">
+            <app-problem-content></app-problem-content>
+        </section>
 
-  <main class="workspace-main">
-    <section class="workspace-panel workspace-problem">
-      <app-problem-content></app-problem-content>
-    </section>
+        <section class="workspace-panel workspace-editor">
+            <div class="editor-content">
+                <pre><code>var twoSum = function(nums, target) &#123;
+    const map = new Map();
+            
+    for (let i = 0; i < nums.length; i++) &#123;
+        const complement = target - nums[i];
+            
+        if (map.has(complement)) &#123;
+            return [map.get(complement), i];
+        &#125;
+        map.set(nums[i], i);
+    &#125;
+        
+    return [];
+&#125;;</code></pre>
 
-    <section class="workspace-panel workspace-editor">
-      <div class="editor-content">
-        <app-code-editor
-          [code]="challengeWorkspaceState.code()"
-          [language]="challengeWorkspaceState.selectedLanguage()"
-          (codeChange)="onCodeChange($event)"
-        ></app-code-editor>
-      </div>
-    </section>
-  </main>
+            </div>
+        </section>
+
+    </main>
 
   <footer class="workspace-footer">
     <button class="btn" type="button">Run Code</button>

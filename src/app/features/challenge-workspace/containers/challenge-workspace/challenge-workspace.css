@@ -35,7 +35,7 @@
 .top-header,
 .workspace-toolbar {
   border-bottom: 1px solid #2a2a2a;
-}
+  }
 
 .logo {
   font-size: 1rem;
@@ -45,26 +45,7 @@
 .top-nav span {
   color: #b6b6b8;
   font-size: 14px;
-}
-
-.problem-tabs {
-  display: flex;
-  gap: 4px;
-}
-
-.tab {
-  border: 0;
-  background: transparent;
-  color: #b6b6b8;
-  padding: 8px 10px;
-  cursor: pointer;
-  border-bottom: 2px solid transparent;
-}
-
-.tab.active {
-  color: #f3f3f3;
-  border-bottom-color: #facc15;
-}
+} 
 
 .language-tab {
   display: flex;
@@ -155,6 +136,34 @@
 .problem-content li {
   margin-bottom: 6px;
   color: #d4d4d4;
+}
+
+.problem-content h1 {
+  margin-bottom: 12px;
+  font-size: 1.8rem;
+}
+
+.problem-content p {
+  margin-bottom: 10px;
+  line-height: 1.5;
+  color: #d4d4d4;
+}
+
+:host ::ng-deep .problem-content p strong {
+  color: #fac738;
+  background-color: #2b2b2b;
+  border: 1px solid #3a3a3a;
+  border-radius: 4px;
+  padding: 1px 5px;
+}
+
+.editor-content pre {
+  margin-top: 8px;
+  white-space: pre-wrap;
+  word-break: break-word;
+  color: #d4d4d4;
+  font-size: 14px;
+  line-height: 1.45;
 }
 
 .workspace-footer {
