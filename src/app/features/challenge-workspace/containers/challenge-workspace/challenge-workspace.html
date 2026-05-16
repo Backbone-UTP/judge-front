@@ -23,7 +23,7 @@
       <div class="problem-content">
         <h1>{{ challenge().title }}</h1>
         @for (paragraph of challenge().descriptionParagraphs; track $index) {
-          <p>{{ paragraph }}</p>
+          <p [innerHTML]="paragraph"></p>
         }
         @for (example of challenge().examples; track $index) {
           <app-example-block [example]="example" [index]="$index + 1" />
