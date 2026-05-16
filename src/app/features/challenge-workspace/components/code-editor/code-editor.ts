@@ -93,8 +93,6 @@ export class CodeEditor {
       javascript: ['const', 'let', 'function', 'return', 'if', 'for', 'new'],
       typescript: ['const', 'let', 'function', 'return', 'if', 'for', 'new', 'number'],
       python: ['def', 'return', 'for', 'if', 'in'],
-      java: ['class', 'public', 'int', 'return', 'new', 'for', 'if'],
-      cpp: ['class', 'public', 'return', 'const', 'int', 'for', 'if'],
     };
     const escapedKeywords = keywordByLanguage[language].join('|');
 

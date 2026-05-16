@@ -24,23 +24,13 @@
         </section>
 
         <section class="workspace-panel workspace-editor">
-            <div class="editor-content">
-                <pre><code>var twoSum = function(nums, target) &#123;
-    const map = new Map();
-            
-    for (let i = 0; i < nums.length; i++) &#123;
-        const complement = target - nums[i];
-            
-        if (map.has(complement)) &#123;
-            return [map.get(complement), i];
-        &#125;
-        map.set(nums[i], i);
-    &#125;
-        
-    return [];
-&#125;;</code></pre>
-
-            </div>
+          <div class="editor-content">
+            <app-code-editor
+              [code]="challengeWorkspaceState.code()"
+              [language]="challengeWorkspaceState.selectedLanguage()"
+              (codeChange)="challengeWorkspaceState.updateCode($event)"
+            ></app-code-editor>
+          </div>
         </section>
 
     </main>

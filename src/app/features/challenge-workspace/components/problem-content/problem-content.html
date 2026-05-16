@@ -1,0 +1,17 @@
+<div class="problem-content">
+  <h1>{{ challenge.title }}</h1>
+
+  <div class="problem-description">
+    <p *ngFor="let p of challenge.descriptionParagraphs" [innerHTML]="p"></p>
+  </div>
+
+  <div class="problem-examples">
+    <h2>Examples</h2>
+    <app-example-block *ngFor="let ex of challenge.examples; index as i" [example]="ex" [index]="i + 1"></app-example-block>
+  </div>
+
+  <div class="problem-constraints">
+    <h3>Constraints</h3>
+    <app-constraints-list [constraints]="challenge.constraints"></app-constraints-list>
+  </div>
+</div>

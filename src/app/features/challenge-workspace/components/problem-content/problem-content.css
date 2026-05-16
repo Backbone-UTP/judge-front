@@ -1,0 +1,21 @@
+.problem-content {
+  padding: 16px;
+}
+
+.problem-content h1 {
+  font-size: 18px;
+  margin: 0 0 8px 0;
+}
+
+.problem-description p {
+  margin: 8px 0;
+  color: #e6e6e6;
+}
+
+.problem-examples {
+  margin-top: 12px;
+}
+
+.problem-constraints {
+  margin-top: 12px;
+}
