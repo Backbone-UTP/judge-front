@@ -53,6 +53,32 @@
   gap: 8px;
 }
 
+.problem-tabs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.problem-tabs .tab {
+  background: transparent;
+  border: 1px solid transparent;
+  color: #d4d4d4;
+  padding: 6px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.problem-tabs .tab:hover {
+  background: rgba(255,255,255,0.02);
+}
+
+.problem-tabs .tab.active {
+  background: #17171a;
+  border: 1px solid #2a2a2a;
+  color: #fac738;
+}
+
 .language-tab label {
   font-size: 13px;
   color: #b6b6b8;
