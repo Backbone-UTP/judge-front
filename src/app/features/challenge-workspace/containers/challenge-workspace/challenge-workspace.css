@@ -45,26 +45,7 @@
 .top-nav span {
   color: #b6b6b8;
   font-size: 14px;
-}
-
-.problem-tabs {
-  display: flex;
-  gap: 4px;
-}
-
-.tab {
-  border: 0;
-  background: transparent;
-  color: #b6b6b8;
-  padding: 8px 10px;
-  cursor: pointer;
-  border-bottom: 2px solid transparent;
-}
-
-.tab.active {
-  color: #f3f3f3;
-  border-bottom-color: #facc15;
-}
+} 
 
 .language-tab span {
   display: inline-block;

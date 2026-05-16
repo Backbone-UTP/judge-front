@@ -7,18 +7,20 @@
   </header>
 
   <div class="workspace-toolbar">
-    <div class="problem-tabs">
-      <button class="tab active" type="button">Description</button>
-      <button class="tab" type="button">Submissions</button>
-      <button class="tab" type="button">Hints</button>
-    </div>
+    <app-challenge-tabs
+    (ontabclicker)="tabChanges($event)"
+    [tabActive]="tabActive()">  
 
+    </app-challenge-tabs>
     <div class="language-tab">
       <span>JavaScript</span>
     </div>
   </div>
 
   <main class="workspace-main">
+    @if (tabActive()=== 'Description') {
+
+    
     <section class="workspace-panel workspace-problem">
       <div class="problem-content">
         <h1>{{ challenge().title }}</h1>
@@ -31,12 +33,25 @@
         <app-constraints-list [constraints]="challenge().constraints" />
       </div>
     </section>
+  }
 
+  @else if (tabActive()==='Submissions') {
+    <section class="workspace-panel workspace-problem">
+
+    </section>    
+  }
+
+  @else if (tabActive()==='Hints') {
+    <section class="workspace-panel workspace-problem">
+
+    </section>  
+  }
     <section class="workspace-panel workspace-editor">
       <div class="editor-content">
         <pre><code>{{ challenge().editorSnippet }}</code></pre>
       </div>
     </section>
+  
   </main>
 
   <footer class="workspace-footer">

@@ -1,0 +1,6 @@
+    <div class="problem-tabs">
+      <button (click)="tabclicker('Description')" [class]="tabActive()==='Description'?'tab active':'tab'" type="button">Description</button>
+      <button (click)="tabclicker('Submissions')" [class]="tabActive()==='Submissions'?'tab active':'tab'" type="button">Submissions</button>
+      <button (click)="tabclicker('Hints')      " [class]="tabActive()==='Hints'?'tab active':'tab'" type="button">Hints</button>
+    </div>
+    
