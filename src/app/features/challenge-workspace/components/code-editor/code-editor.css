@@ -5,7 +5,7 @@
 
 .code-editor {
   display: grid;
-  grid-template-columns: 48px 1fr;
+  grid-template-columns: 56px 1fr;
   height: 100%;
   overflow: hidden;
   background: #0a0a0a;
@@ -16,15 +16,15 @@
   background: #0a0a0a;
   border-right: 1px solid #333333;
   color: #525252;
-  font-family: 'JetBrains Mono', 'Fira Code', Consolas, 'Courier New', monospace;
-  padding: 16px 13px 16px 0;
+  font-family: ui-monospace, SFMono-Regular, 'JetBrains Mono', 'Fira Code', Consolas, 'Roboto Mono', monospace;
+  padding: 16px 14px 16px 6px;
 }
 
 .line-number {
-  height: 24px;
-  line-height: 24px;
+  height: 26px;
+  line-height: 26px;
   text-align: right;
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .line-number--active {
@@ -42,9 +42,9 @@
   left: 0;
   right: 0;
   top: 16px;
-  height: 24px;
-  background: rgba(255, 255, 255, 0.05);
-  border-left: 2px solid #fac738;
+  height: 26px;
+  background: rgba(255, 255, 255, 0.04);
+  border-left: 3px solid #ffd24d;
   box-sizing: border-box;
   pointer-events: none;
 }
@@ -58,12 +58,7 @@
   border: 0;
   resize: none;
   outline: none;
-  font:
-    400 14px/24px 'JetBrains Mono',
-    'Fira Code',
-    Consolas,
-    'Courier New',
-    monospace;
+  font: 400 15px/26px ui-monospace, SFMono-Regular, 'JetBrains Mono', 'Fira Code', Consolas, 'Roboto Mono', monospace;
   white-space: pre;
   tab-size: 2;
 }
