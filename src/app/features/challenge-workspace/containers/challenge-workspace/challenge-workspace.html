@@ -1,52 +1,46 @@
 <div class="workspace-layout">
-    <header class="top-header">
-        <div class="logo">Backbone Judge</div>
-        <nav class="top-nav">
-            <span>Problems</span>
-        </nav>
-    </header>
+  <header class="top-header">
+    <div class="logo">Backbone Judge</div>
+    <nav class="top-nav">
+      <span>Problems</span>
+    </nav>
+  </header>
 
-    <div class="workspace-toolbar">
-        <div class="problem-tabs">
-            <button class="tab active" type="button">Description</button>
-            <button class="tab" type="button">Submissions</button>
-            <button class="tab" type="button">Hints</button>
-        </div>
-
-        <div class="language-tab">
-            <span>JavaScript</span>
-        </div>
+  <div class="workspace-toolbar">
+    <div class="problem-tabs">
+      <button class="tab active" type="button">Description</button>
+      <button class="tab" type="button">Submissions</button>
+      <button class="tab" type="button">Hints</button>
     </div>
 
-    <main class="workspace-main">
-        <section class="workspace-panel workspace-problem">
-            <app-problem-content></app-problem-content>
-        </section>
+    <div class="language-tab">
+      <span>JavaScript</span>
+    </div>
+  </div>
 
-        <section class="workspace-panel workspace-editor">
-            <div class="editor-content">
-                <pre><code>var twoSum = function(nums, target) &#123;
-    const map = new Map();
-            
-    for (let i = 0; i < nums.length; i++) &#123;
-        const complement = target - nums[i];
-            
-        if (map.has(complement)) &#123;
-            return [map.get(complement), i];
-        &#125;
-        map.set(nums[i], i);
-    &#125;
-        
-    return [];
-&#125;;</code></pre>
+  <main class="workspace-main">
+    <section class="workspace-panel workspace-problem">
+      <div class="problem-content">
+        <h1>{{ challenge().title }}</h1>
+        @for (paragraph of challenge().descriptionParagraphs; track $index) {
+          <p [innerHTML]="paragraph"></p>
+        }
+        @for (example of challenge().examples; track $index) {
+          <app-example-block [example]="example" [index]="$index + 1" />
+        }
+        <app-constraints-list [constraints]="challenge().constraints" />
+      </div>
+    </section>
 
-            </div>
-        </section>
+    <section class="workspace-panel workspace-editor">
+      <div class="editor-content">
+        <pre><code>{{ challenge().editorSnippet }}</code></pre>
+      </div>
+    </section>
+  </main>
 
-    </main>
-
-    <footer class="workspace-footer">
-        <button class="btn" type="button">Run Code</button>
-        <button class="btn btn-primary" type="button">Submit</button>
-    </footer>
+  <footer class="workspace-footer">
+    <button class="btn" type="button">Run Code</button>
+    <button class="btn btn-primary" type="button">Submit</button>
+  </footer>
 </div>

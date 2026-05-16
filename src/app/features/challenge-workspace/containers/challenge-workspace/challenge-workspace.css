@@ -3,7 +3,11 @@
   min-height: 100vh;
   background: #0f0f10;
   color: #f3f3f3;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
 }
 
 * {
@@ -91,6 +95,34 @@
 
 .workspace-editor {
   background: #0d0d0f;
+}
+
+.problem-content h1 {
+  margin-bottom: 12px;
+  font-size: 1.8rem;
+}
+
+.problem-content p {
+  margin-bottom: 10px;
+  line-height: 1.5;
+  color: #d4d4d4;
+}
+
+:host ::ng-deep .problem-content p strong {
+  color: #fac738;
+  background-color: #2b2b2b;
+  border: 1px solid #3a3a3a;
+  border-radius: 4px;
+  padding: 1px 5px;
+}
+
+.editor-content pre {
+  margin-top: 8px;
+  white-space: pre-wrap;
+  word-break: break-word;
+  color: #d4d4d4;
+  font-size: 14px;
+  line-height: 1.45;
 }
 
 .workspace-footer {
