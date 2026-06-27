@@ -18,6 +18,10 @@ export type ChallengeConstraintDto =
 
 export interface ChallengeProblemDto {
   title: string;
+  difficulty?: 'Easy' | 'Medium' | 'Hard';
+  acceptanceCount?: number;
+  engagement?: number;
+  author?: string;
   descriptionParagraphs: string[];
   examples: ChallengeExampleDto[];
   constraints: ChallengeConstraintDto[];

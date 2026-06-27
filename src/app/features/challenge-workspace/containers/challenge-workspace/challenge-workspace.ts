@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core';
-
+import { ChallengeHeader } from '../../components/challenge-header/challenge-header';
 import { ConstraintsList } from '../../components/constraints-list/constraints-list';
 import { ExampleBlock } from '../../components/example-block/example-block';
 import twoSumChallengeFixture from '../../fixtures/two-sum.challenge.json';
@@ -8,7 +8,7 @@ import { ChallengeTabs } from '../../../../components/challenge-tabs/challenge-t
 
 @Component({
   selector: 'app-challenge-workspace',
-  imports: [ConstraintsList, ExampleBlock,ChallengeTabs],
+  imports: [ConstraintsList, ExampleBlock, ChallengeTabs, ChallengeHeader],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './challenge-workspace.html',
   styleUrl: './challenge-workspace.css',

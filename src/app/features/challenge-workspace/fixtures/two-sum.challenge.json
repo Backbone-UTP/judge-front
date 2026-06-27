@@ -1,5 +1,9 @@
 {
   "title": "1. Two Sum",
+  "difficulty": "Hard",
+  "acceptanceCount": 1500,
+  "engagement": 365,
+  "author": "Backbone Team",
   "descriptionParagraphs": [
     "Given an array of integers <strong>nums</strong> and an integer <strong>target</strong>, return indices of the two numbers such that they add up to <strong>target</strong>.",
     "You may assume that each input would have exactly one solution, and you may not use the same element twice.",

@@ -23,7 +23,7 @@
     
     <section class="workspace-panel workspace-problem">
       <div class="problem-content">
-        <h1>{{ challenge().title }}</h1>
+        <app-challenge-header [challenge]="challenge()"/>
         @for (paragraph of challenge().descriptionParagraphs; track $index) {
           <p [innerHTML]="paragraph"></p>
         }
