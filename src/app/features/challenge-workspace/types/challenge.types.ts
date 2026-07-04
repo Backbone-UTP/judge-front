@@ -1,3 +1,12 @@
+export type Difficulty = 'Easy' | 'Medium' | 'Hard';
+
+export interface ProblemMeta {
+  difficulty?: Difficulty;
+  acceptanceCount?: number;
+  engagement?: number;
+  author?: string;
+}
+
 export interface ChallengeExampleDto {
   input: string;
   output: string;
@@ -16,12 +25,8 @@ export type ChallengeConstraintDto =
       text: string;
     };
 
-export interface ChallengeProblemDto {
+export interface ChallengeProblemDto extends ProblemMeta {
   title: string;
-  difficulty?: 'Easy' | 'Medium' | 'Hard';
-  acceptanceCount?: number;
-  engagement?: number;
-  author?: string;
   descriptionParagraphs: string[];
   examples: ChallengeExampleDto[];
   constraints: ChallengeConstraintDto[];
