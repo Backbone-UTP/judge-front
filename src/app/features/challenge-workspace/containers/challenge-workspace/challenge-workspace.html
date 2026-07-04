@@ -7,51 +7,42 @@
   </header>
 
   <div class="workspace-toolbar">
-    <app-challenge-tabs
-    (ontabclicker)="tabChanges($event)"
-    [tabActive]="tabActive()">  
-
+    <app-challenge-tabs (ontabclicker)="tabChanges($event)" [tabActive]="tabActive()">
     </app-challenge-tabs>
     <div class="language-tab">
       <span>JavaScript</span>
     </div>
+    @if (authFacade.user(); as user) {
+      <span>{{ user.displayName }}</span>
+
+      <button type="button" (click)="logout()">Cerrar sesion</button>
+    }
   </div>
 
   <main class="workspace-main">
-    @if (tabActive()=== 'Description') {
-
-    
-    <section class="workspace-panel workspace-problem">
-      <div class="problem-content">
-        <h1>{{ challenge().title }}</h1>
-        @for (paragraph of challenge().descriptionParagraphs; track $index) {
-          <p [innerHTML]="paragraph"></p>
-        }
-        @for (example of challenge().examples; track $index) {
-          <app-example-block [example]="example" [index]="$index + 1" />
-        }
-        <app-constraints-list [constraints]="challenge().constraints" />
-      </div>
-    </section>
-  }
-
-  @else if (tabActive()==='Submissions') {
-    <section class="workspace-panel workspace-problem">
-
-    </section>    
-  }
-
-  @else if (tabActive()==='Hints') {
-    <section class="workspace-panel workspace-problem">
-
-    </section>  
-  }
+    @if (tabActive() === 'Description') {
+      <section class="workspace-panel workspace-problem">
+        <div class="problem-content">
+          <h1>{{ challenge().title }}</h1>
+          @for (paragraph of challenge().descriptionParagraphs; track $index) {
+            <p [innerHTML]="paragraph"></p>
+          }
+          @for (example of challenge().examples; track $index) {
+            <app-example-block [example]="example" [index]="$index + 1" />
+          }
+          <app-constraints-list [constraints]="challenge().constraints" />
+        </div>
+      </section>
+    } @else if (tabActive() === 'Submissions') {
+      <section class="workspace-panel workspace-problem"></section>
+    } @else if (tabActive() === 'Hints') {
+      <section class="workspace-panel workspace-problem"></section>
+    }
     <section class="workspace-panel workspace-editor">
       <div class="editor-content">
         <pre><code>{{ challenge().editorSnippet }}</code></pre>
       </div>
     </section>
-  
   </main>
 
   <footer class="workspace-footer">
