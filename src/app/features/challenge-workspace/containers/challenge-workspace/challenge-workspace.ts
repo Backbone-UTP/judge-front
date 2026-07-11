@@ -1,5 +1,11 @@
+<<<<<<< HEAD
 import { ChangeDetectionStrategy, Component, inject, input, signal } from '@angular/core';
 
+=======
+import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core';
+import { EditorToolbar } from '../../components/editor-toolbar/editor-toolbar';
+import { ChallengeWorkspaceState } from '../../state/challenge-workspace.state';
+>>>>>>> 603be00 (se implementó el editor toolbar para cambiar el lenguaje de programación)
 import { ConstraintsList } from '../../components/constraints-list/constraints-list';
 import { ExampleBlock } from '../../components/example-block/example-block';
 import twoSumChallengeFixture from '../../fixtures/two-sum.challenge.json';
@@ -10,7 +16,11 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-challenge-workspace',
+<<<<<<< HEAD
   imports: [ConstraintsList, ExampleBlock, ChallengeTabs],
+=======
+  imports: [ConstraintsList, ExampleBlock,ChallengeTabs,EditorToolbar],
+>>>>>>> 603be00 (se implementó el editor toolbar para cambiar el lenguaje de programación)
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './challenge-workspace.html',
   styleUrl: './challenge-workspace.css',
@@ -21,6 +31,7 @@ export class ChallengeWorkspaceContainer {
   private readonly router = inject(Router);
   tabActive = signal('Description');
   readonly challenge = input<ChallengeProblemDto>(twoSumChallengeFixture as ChallengeProblemDto);
+<<<<<<< HEAD
   tabChanges(tab: string) {
     this.tabActive.set(tab);
   }
@@ -31,5 +42,10 @@ export class ChallengeWorkspaceContainer {
         void this.router.navigateByUrl('/login');
       },
     });
+=======
+  readonly state = new ChallengeWorkspaceState();
+  tabChanges(tab:string){
+    this.tabActive.set(tab)
+>>>>>>> 603be00 (se implementó el editor toolbar para cambiar el lenguaje de programación)
   }
 }

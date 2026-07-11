@@ -1,0 +1,65 @@
+<div class="editor-toolbar">
+  <div class="toolbar-left">
+    <div class="language-selector">
+      <button
+        class="language-toggle"
+        type="button"
+        (click)="toggleLanguageMenu()">
+
+        <span>{{ languageLabels[selectedLanguage()] }}</span>
+
+        <img
+          src="/icons/edit-toolbar/arrow.png"
+          alt="Arrow">
+      </button>
+
+      @if (isLanguageMenuOpen()) {
+        <div class="language-menu">
+          @for (language of languages(); track language) {
+            <button
+              class="language-option"
+              type="button"
+              (click)="changeLanguage(language)">
+
+              {{ languageLabels[language] }}
+
+            </button>
+          }
+        </div>
+      }
+    </div>
+    <div class="toolbar-divider"></div>
+
+    <button
+      class="toolbar-button"
+      type="button"
+      (click)="onSettingsClick()">
+
+      <img
+        src="/icons/edit-toolbar/settings.png"
+        alt="Settings">
+    </button>
+  </div>
+  <div class="toolbar-right">
+
+    <button
+      class="toolbar-button"
+      type="button"
+      (click)="onResetClick()">
+
+      <img
+        src="/icons/edit-toolbar/reset.png"
+        alt="Reset">
+    </button>
+
+    <button
+      class="toolbar-button"
+      type="button"
+      (click)="onExpandClick()">
+
+      <img
+        src="/icons/edit-toolbar/expand.png"
+        alt="Expand">
+    </button>
+  </div>
+</div>
