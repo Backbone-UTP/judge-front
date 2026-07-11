@@ -6,10 +6,11 @@ import twoSumChallengeFixture from '../../fixtures/two-sum.challenge.json';
 import type { ChallengeProblemDto } from '../../types/challenge.types';
 import { challengeWorkspaceRoutes } from '../../challenge-workspace.routes';
 import { ChallengeTabs } from '../../../../components/challenge-tabs/challenge-tabs';
+import { WorkspaceActions } from '../../components/workspace-actions/workspace-actions';
 
 @Component({
   selector: 'app-challenge-workspace',
-  imports: [ConstraintsList, ExampleBlock,ChallengeTabs],
+  imports: [ConstraintsList, ExampleBlock, ChallengeTabs, WorkspaceActions],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './challenge-workspace.html',
   styleUrl: './challenge-workspace.css',

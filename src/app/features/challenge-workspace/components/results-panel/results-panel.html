@@ -1,0 +1,13 @@
+<section class="results-panel" aria-live="polite">
+  @if (result().status) {
+    <p>Run your code to see the result.</p>
+  } @else if (result().status === 'running') {
+    <p>Running tests…</p>
+  } @else {
+    <p>{{ result().message }}</p>
+
+    @if (result().output; as output) {
+      <pre><code>{{ output }}</code></pre>
+    }
+  }
+</section>

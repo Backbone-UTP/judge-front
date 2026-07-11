@@ -7,9 +7,7 @@
   </header>
 
   <div class="workspace-toolbar">
-    <app-challenge-tabs
-    (ontabclicker)="tabChanges($event)"
-    [tabActive]="tabActive()">  
+    <app-challenge-tabs (ontabclicker)="tabChanges($event)" [tabActive]="tabActive()">
 
     </app-challenge-tabs>
     <div class="language-tab">
@@ -20,42 +18,42 @@
   <main class="workspace-main">
     @if (tabActive()=== 'Description') {
 
-    
+
     <section class="workspace-panel workspace-problem">
       <div class="problem-content">
         <h1>{{ challenge().title }}</h1>
         @for (paragraph of challenge().descriptionParagraphs; track $index) {
-          <p [innerHTML]="paragraph"></p>
+        <p [innerHTML]="paragraph"></p>
         }
         @for (example of challenge().examples; track $index) {
-          <app-example-block [example]="example" [index]="$index + 1" />
+        <app-example-block [example]="example" [index]="$index + 1" />
         }
         <app-constraints-list [constraints]="challenge().constraints" />
       </div>
     </section>
-  }
+    }
 
-  @else if (tabActive()==='Submissions') {
+    @else if (tabActive()==='Submissions') {
     <section class="workspace-panel workspace-problem">
 
-    </section>    
-  }
+    </section>
+    }
 
-  @else if (tabActive()==='Hints') {
+    @else if (tabActive()==='Hints') {
     <section class="workspace-panel workspace-problem">
 
-    </section>  
-  }
+    </section>
+    }
     <section class="workspace-panel workspace-editor">
       <div class="editor-content">
         <pre><code>{{ challenge().editorSnippet }}</code></pre>
       </div>
     </section>
-  
+
   </main>
 
   <footer class="workspace-footer">
-    <button class="btn" type="button">Run Code</button>
+    <app-workspace-actions></app-workspace-actions>
     <button class="btn btn-primary" type="button">Submit</button>
   </footer>
 </div>

@@ -1,0 +1,49 @@
+.btn,
+.click,
+.run.active {
+  min-width: 7.75rem;
+  border: 1px solid #3a3a3a;
+  border-radius: 0.5rem;
+  padding: 0.55rem 0.9rem;
+  background: #1a1a1d;
+  color: #f3f3f3;
+  font-weight: 700;
+  line-height: 1.25;
+  cursor: pointer;
+  transition:
+    border-color 160ms ease,
+    background-color 160ms ease,
+    color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.btn:hover,
+.click:hover {
+  border-color: #fac738;
+  background: #242218;
+}
+
+.btn:focus-visible,
+.click:focus-visible,
+.run.active:focus-visible {
+  outline: 2px solid #fac738;
+  outline-offset: 2px;
+}
+
+.run.active {
+  position: relative;
+  border-color: #fac738;
+  background: #fac738;
+  color: transparent;
+  cursor: wait;
+  box-shadow: 0 0 0 3px rgb(250 199 56 / 14%);
+}
+
+.run.active::after {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  content: 'Running';
+  color: #17130a;
+}
