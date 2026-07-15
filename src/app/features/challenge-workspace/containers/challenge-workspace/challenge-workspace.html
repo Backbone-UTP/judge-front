@@ -6,34 +6,40 @@
     </nav>
   </header>
 
-    <div class="workspace-toolbar">
-        <div class="problem-tabs">
-            <button class="tab active" type="button">Description</button>
-            <button class="tab" type="button">Submissions</button>
-            <button class="tab" type="button">Hints</button>
-        </div>
-
-        <div class="language-tab">
-            <span>JavaScript</span>
-        </div>
+  <div class="workspace-toolbar">
+    <app-challenge-tabs (ontabclicker)="tabChanges($event)" [tabActive]="tabActive()">
+    </app-challenge-tabs>
+    <div class="language-tab">
+      <span>JavaScript</span>
     </div>
+    @if (authFacade.user(); as user) {
+      <span>{{ user.displayName }}</span>
 
-    <main class="workspace-main">
-        <section class="workspace-panel workspace-problem">
-            <app-problem-content></app-problem-content>
-        </section>
+      <button type="button" (click)="logout()">Cerrar sesion</button>
+    }
+  </div>
 
-        <section class="workspace-panel workspace-editor">
-          <div class="editor-content">
-            <app-code-editor
-              [code]="challengeWorkspaceState.code()"
-              [language]="challengeWorkspaceState.selectedLanguage()"
-              (codeChange)="challengeWorkspaceState.updateCode($event)"
-            ></app-code-editor>
-          </div>
-        </section>
+  <main class="workspace-main">
+    @if (tabActive() === 'Description') {
+      <section class="workspace-panel workspace-problem">
+        <app-problem-content></app-problem-content>
+      </section>
+    } @else if (tabActive() === 'Submissions') {
+      <section class="workspace-panel workspace-problem"></section>
+    } @else if (tabActive() === 'Hints') {
+      <section class="workspace-panel workspace-problem"></section>
+    }
 
-    </main>
+    <section class="workspace-panel workspace-editor">
+      <div class="editor-content">
+        <app-code-editor
+          [code]="challengeWorkspaceState.code()"
+          [language]="challengeWorkspaceState.selectedLanguage()"
+          (codeChange)="challengeWorkspaceState.updateCode($event)"
+        ></app-code-editor>
+      </div>
+    </section>
+  </main>
 
   <footer class="workspace-footer">
     <button class="btn" type="button">Run Code</button>

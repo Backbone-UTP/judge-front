@@ -1,15 +1,36 @@
-import { Component, inject } from '@angular/core';
-import { ProblemContent } from '../../components/problem-content/problem-content';
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { ChallengeTabs } from '../../../../components/challenge-tabs/challenge-tabs';
 import { CodeEditor } from '../../components/code-editor/code-editor';
+import { ProblemContent } from '../../components/problem-content/problem-content';
 import { ChallengeWorkspaceState } from '../../state/challenge-workspace.state';
+import { AuthFacade } from '../../../auth/state/auth-facade';
 
 @Component({
   selector: 'app-challenge-workspace',
   standalone: true,
-  imports: [ProblemContent, CodeEditor],
+  imports: [ChallengeTabs, ProblemContent, CodeEditor],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './challenge-workspace.html',
   styleUrl: './challenge-workspace.css',
 })
 export class ChallengeWorkspaceContainer {
+  readonly authFacade = inject(AuthFacade);
   readonly challengeWorkspaceState = inject(ChallengeWorkspaceState);
+
+  private readonly router = inject(Router);
+  readonly tabActive = signal('Description');
+
+  tabChanges(tab: string): void {
+    this.tabActive.set(tab);
+  }
+
+  logout(): void {
+    this.authFacade.logout().subscribe({
+      next: () => {
+        void this.router.navigateByUrl('/login');
+      },
+    });
+  }
 }
