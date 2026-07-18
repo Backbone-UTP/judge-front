@@ -1,0 +1,103 @@
+.editor-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 48px;
+  padding: 0 16px;
+  background: #262626;
+  border-left: 2px solid #333333;
+  border-bottom: 2px solid #333333;
+}
+
+.toolbar-left,
+.toolbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.toolbar-left {
+  gap: 20px;
+}
+
+.toolbar-right {
+  gap: 32px;
+}
+
+.language-selector {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-right: 16px;
+  background: #262626;
+  transition: background-color 0.15s ease;
+}
+
+/* ---------- DROPDOWN ---------- */
+
+.language-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  background: #262626;
+  border: none;
+  outline: none;
+
+  color: #f0c54d;
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  padding: 0 16px;
+  height: 32px;
+}
+
+.language-toggle:hover {
+  color: #FFD666;
+}
+
+.language-menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+
+  min-width: 150px;
+
+  background: #262626;
+  border: 1px solid #333333;
+  border-radius: 4px;
+
+  overflow: hidden;
+
+  z-index: 100;
+}
+
+.language-option {
+  display: block;
+  width: 100%;
+
+  background: transparent;
+  border: none;
+
+  color: #d4d4d4;
+  font-size: 14px;
+  font-weight: 500;
+
+  text-align: left;
+
+  padding: 10px 16px;
+
+  cursor: pointer;
+}
+
+.language-option:hover {
+  background: #333333;
+  color: #FFD666;
+}
+
+.toolbar-divider {
+  width: 1px;
+  height: 22px;
+  background: #3b3b3b;
+}

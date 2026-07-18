@@ -7,16 +7,16 @@
   </header>
 
   <div class="workspace-toolbar">
-    <app-challenge-tabs (ontabclicker)="tabChanges($event)" [tabActive]="tabActive()">
+    <app-challenge-tabs
+    (ontabclicker)="tabChanges($event)"
+    [tabActive]="tabActive()">  
     </app-challenge-tabs>
-    <div class="language-tab">
-      <span>JavaScript</span>
-    </div>
-    @if (authFacade.user(); as user) {
-      <span>{{ user.displayName }}</span>
 
-      <button type="button" (click)="logout()">Cerrar sesion</button>
-    }
+    <app-editor-toolbar
+        [languages]="state.languages"
+        [selectedLanguage]="state.selectedLanguage()"
+        (languageChange)="state.setLanguage($event)">
+    </app-editor-toolbar>
   </div>
 
   <main class="workspace-main">
@@ -39,6 +39,8 @@
       <section class="workspace-panel workspace-problem"></section>
     }
     <section class="workspace-panel workspace-editor">
+
+      
       <div class="editor-content">
         <pre><code>{{ challenge().editorSnippet }}</code></pre>
       </div>
