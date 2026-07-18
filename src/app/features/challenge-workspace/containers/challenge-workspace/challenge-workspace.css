@@ -17,8 +17,7 @@
 .workspace-layout {
   min-height: 100dvh;
   display: grid;
-  grid-template-rows: 56px 48px 1fr 56px;
-  overflow: hidden;
+  grid-template-rows: 56px 48px 1fr auto;
 }
 
 .top-header,
@@ -35,7 +34,7 @@
 .top-header,
 .workspace-toolbar {
   border-bottom: 1px solid #2a2a2a;
-  }
+}
 
 .logo {
   font-size: 1rem;
@@ -45,7 +44,7 @@
 .top-nav span {
   color: #b6b6b8;
   font-size: 14px;
-} 
+}
 
 .language-tab span {
   display: inline-block;
@@ -107,9 +106,25 @@
 }
 
 .workspace-footer {
-  justify-content: flex-end;
-  gap: 10px;
+  position: relative;
+  align-items: center;
+  min-height: 56px;
   border-top: 1px solid #2a2a2a;
+}
+
+.footer-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+}
+
+.workspace-footer app-results-panel {
+  position: absolute;
+  bottom: 56px;
+  left: 16px;
+  z-index: 1;
+  transform: translateY(100%)
 }
 
 .btn {
@@ -136,5 +151,13 @@
   .workspace-problem {
     border-right: 0;
     border-bottom: 1px solid #2a2a2a;
+  }
+
+  .workspace-footer {
+    min-height: 56px;
+  }
+
+  .footer-actions {
+    margin-left: auto;
   }
 }

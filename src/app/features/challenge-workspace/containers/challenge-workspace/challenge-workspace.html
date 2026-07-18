@@ -8,7 +8,6 @@
 
   <div class="workspace-toolbar">
     <app-challenge-tabs (ontabclicker)="tabChanges($event)" [tabActive]="tabActive()">
-
     </app-challenge-tabs>
     <div class="language-tab">
       <span>JavaScript</span>
@@ -16,44 +15,36 @@
   </div>
 
   <main class="workspace-main">
-    @if (tabActive()=== 'Description') {
-
-
-    <section class="workspace-panel workspace-problem">
-      <div class="problem-content">
-        <h1>{{ challenge().title }}</h1>
-        @for (paragraph of challenge().descriptionParagraphs; track $index) {
-        <p [innerHTML]="paragraph"></p>
-        }
-        @for (example of challenge().examples; track $index) {
-        <app-example-block [example]="example" [index]="$index + 1" />
-        }
-        <app-constraints-list [constraints]="challenge().constraints" />
-      </div>
-    </section>
-    }
-
-    @else if (tabActive()==='Submissions') {
-    <section class="workspace-panel workspace-problem">
-
-    </section>
-    }
-
-    @else if (tabActive()==='Hints') {
-    <section class="workspace-panel workspace-problem">
-
-    </section>
+    @if (tabActive() === 'Description') {
+      <section class="workspace-panel workspace-problem">
+        <div class="problem-content">
+          <h1>{{ challenge().title }}</h1>
+          @for (paragraph of challenge().descriptionParagraphs; track $index) {
+            <p [innerHTML]="paragraph"></p>
+          }
+          @for (example of challenge().examples; track $index) {
+            <app-example-block [example]="example" [index]="$index + 1" />
+          }
+          <app-constraints-list [constraints]="challenge().constraints" />
+        </div>
+      </section>
+    } @else if (tabActive() === 'Submissions') {
+      <section class="workspace-panel workspace-problem"></section>
+    } @else if (tabActive() === 'Hints') {
+      <section class="workspace-panel workspace-problem"></section>
     }
     <section class="workspace-panel workspace-editor">
       <div class="editor-content">
         <pre><code>{{ challenge().editorSnippet }}</code></pre>
       </div>
     </section>
-
   </main>
 
   <footer class="workspace-footer">
-    <app-workspace-actions></app-workspace-actions>
-    <button class="btn btn-primary" type="button">Submit</button>
+    <div class="footer-actions">
+      <app-workspace-actions></app-workspace-actions>
+      <button class="btn btn-primary" type="button">Submit</button>
+    </div>
+    <app-results-panel/>
   </footer>
 </div>

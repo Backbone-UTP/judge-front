@@ -1,4 +1,5 @@
-import { Component, input } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
+import { ExecutionStateService } from '../../services/execution-state.service';
 import { ExecutionResult } from '../../types/challenge.types/challenge.types';
 
 @Component({
@@ -8,5 +9,10 @@ import { ExecutionResult } from '../../types/challenge.types/challenge.types';
   styleUrl: './results-panel.css',
 })
 export class ResultsPanel {
-  readonly result = input.required<ExecutionResult>()
+  executionState = inject(ExecutionStateService);
+  readonly cases = [1,2,3,4];
+  result = signal<ExecutionResult>({
+  message: '',
+  output: ''
+});
 }

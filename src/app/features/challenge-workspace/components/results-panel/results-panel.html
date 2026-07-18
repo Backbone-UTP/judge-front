@@ -1,13 +1,80 @@
-<section class="results-panel" aria-live="polite">
-  @if (result().status) {
-    <p>Run your code to see the result.</p>
-  } @else if (result().status === 'running') {
-    <p>Running tests…</p>
-  } @else {
-    <p>{{ result().message }}</p>
+@if (executionState.status() === 'running') {
 
-    @if (result().output; as output) {
-      <pre><code>{{ output }}</code></pre>
+<section class="results-panel-running">
+  <h3>EVALUATING SOLUTION</h3>
+  <p>Test Results</p>
+
+  <ul>
+    @for (case of cases; track case) {
+      <li>Test case {{ case }}</li>
+    } @empty {
+      <li>No hay elementos en la lista.</li>
     }
-  }
+  </ul>
 </section>
+
+} @else {
+
+<section class="results-panel" aria-label="Test results" aria-live="polite">
+  <div class="results-tabs" role="tablist" aria-label="Result mode">
+    <button class="results-tab results-tab-active" type="button" role="tab" aria-selected="true">
+      <span aria-hidden="true"></span>
+      Test Results
+    </button>
+    <button class="results-tab" type="button" role="tab" aria-selected="false">
+      Custom Input
+    </button>
+  </div>
+
+  <div class="results-content">
+    <div class="test-cases" aria-label="Test cases">
+      <button class="test-case test-case-passed" type="button">
+        <span aria-hidden="true"></span>Case 1
+      </button>
+
+      <button class="test-case test-case-passed" type="button">
+        <span aria-hidden="true"></span>Case 2
+      </button>
+
+      <button
+        class="test-case"
+        [class.test-case-failed]="executionState.status() === 'error'"
+        type="button">
+        <span aria-hidden="true"></span>Case 3
+      </button>
+
+      <button class="test-case test-case-locked" type="button" disabled>
+        <span aria-hidden="true">♙</span>Case 4
+      </button>
+
+      <button class="test-case test-case-locked" type="button" disabled>
+        <span aria-hidden="true">♙</span>Case 5
+      </button>
+    </div>
+
+    <div class="result-block result-input">
+      <div class="result-label-row">
+        <span>Input</span>
+        <button class="copy-button" type="button" aria-label="Copy input">
+          ⧉
+        </button>
+      </div>
+
+      <pre><code>{{ result().message }}</code></pre>
+    </div>
+
+    <div class="result-values">
+      <div class="result-block">
+        <span class="result-label">Output</span>
+        <pre><code>{{ result().output ?? '—' }}</code></pre>
+      </div>
+
+      <div class="result-block">
+        <span class="result-label">Expected</span>
+        <pre><code>{{ result().output ?? '—' }}</code></pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+}

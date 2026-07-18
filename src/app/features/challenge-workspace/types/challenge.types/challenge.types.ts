@@ -8,10 +8,9 @@ import { Component } from '@angular/core';
 })
 export class ChallengeTypes {}
 
-export type ExecutionStatus = 'idle' | 'running' | 'sucess' | 'error';
+export type ExecutionStatus = 'idle' | 'running' | 'success' | 'error';
 
   export interface ExecutionResult {
-    status: ExecutionStatus;
     message: string;
     output?: string;
   }

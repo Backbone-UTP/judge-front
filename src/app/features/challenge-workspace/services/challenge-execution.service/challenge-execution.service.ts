@@ -1,18 +1,17 @@
-import { Component, input, output } from '@angular/core';
-import { ResultsPanel } from '../../components/results-panel/results-panel';
+import { Component, input, output, inject } from '@angular/core';
+import { ExecutionStateService } from '../execution-state.service';
 import { ExecutionResult } from '../../types/challenge.types/challenge.types';
 @Component({
   selector: 'app-challenge-execution',
-  imports: [ResultsPanel],
+  imports: [],
   templateUrl: './challenge-execution.service.html',
   styleUrl: './challenge-execution.service.css',
 })
 export class ChallengeExecutionService {
-  readonly RunActive = input<string>()
-  onRunCodeClicker=output<string>()
-    RunCodeClicker(click:string){
-      console.log(click)
-      this.onRunCodeClicker.emit(click)
-    }
+  executionState = inject(ExecutionStateService);
+
+  runCode(){
+    this.executionState.setStatus('running')
+  }
 
 }

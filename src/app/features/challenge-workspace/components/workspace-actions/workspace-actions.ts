@@ -1,4 +1,4 @@
-import { Component, input, signal } from '@angular/core';
+import { Component} from '@angular/core';
 import { ChallengeExecutionService } from '../../services/challenge-execution.service/challenge-execution.service';
 
 @Component({
@@ -7,10 +7,5 @@ import { ChallengeExecutionService } from '../../services/challenge-execution.se
   templateUrl: './workspace-actions.html',
   styleUrl: './workspace-actions.css',
 })
-export class WorkspaceActions {
-  RunActive = signal('idle')
-  RunCodeDetection(detection:string){
-    this.RunActive.set(detection)
-  }
-}
+export class WorkspaceActions {}
 
