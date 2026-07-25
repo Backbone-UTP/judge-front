@@ -60,6 +60,18 @@ describe('CodeEditor', () => {
     expect(highlightedCode).toContain('token-keyword');
   });
 
+  it('should sync the highlighted layer with horizontal scrolling', () => {
+    const nativeElement = fixture.nativeElement as HTMLElement;
+    const editorInput = nativeElement.querySelector('.editor-input') as HTMLTextAreaElement;
+    const editorHighlight = nativeElement.querySelector('.editor-highlight') as HTMLElement;
+
+    editorInput.scrollLeft = 48;
+    editorInput.dispatchEvent(new Event('scroll'));
+    fixture.detectChanges();
+
+    expect(editorHighlight.style.transform).toContain('translate(-48px, -0px)');
+  });
+
   it('should keep // inside string literals from being parsed as comments', () => {
     fixture.componentRef.setInput('code', 'const url = "https://example.com/path";');
     fixture.detectChanges();

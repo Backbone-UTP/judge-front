@@ -12,7 +12,10 @@
       class="editor-active-line"
       [style.transform]="'translateY(' + activeLineOffset() + 'px)'"
     ></div>
-    <pre class="editor-highlight" [style.transform]="'translateY(-' + scrollTop() + 'px)'">
+    <pre
+      class="editor-highlight"
+      [style.transform]="'translate(' + -scrollLeft() + 'px, -' + scrollTop() + 'px)'"
+    >
 <code [innerHTML]="highlightedCode()"></code></pre>
     <textarea
       class="editor-input"

@@ -52,4 +52,18 @@ describe('ChallengeWorkspaceContainer', () => {
 		expect(state.code()).toContain('function twoSum');
 		expect(navigateByUrl).toHaveBeenCalledWith('/login');
 	});
+
+	it('should update the workspace language from the toolbar', () => {
+		fixture.detectChanges();
+
+		const nativeElement = fixture.nativeElement as HTMLElement;
+		const languageSelect = nativeElement.querySelector('#language-select') as HTMLSelectElement;
+
+		languageSelect.value = 'python';
+		languageSelect.dispatchEvent(new Event('change'));
+		fixture.detectChanges();
+
+		expect(state.selectedLanguage()).toBe('python');
+		expect(state.code()).toContain('def two_sum');
+	});
 });

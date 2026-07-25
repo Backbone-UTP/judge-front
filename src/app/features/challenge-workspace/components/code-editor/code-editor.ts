@@ -28,6 +28,7 @@ export class CodeEditor {
   private readonly lineGutter = viewChild<ElementRef<HTMLDivElement>>('lineGutter');
 
   protected readonly scrollTop = signal(0);
+  protected readonly scrollLeft = signal(0);
   protected readonly activeLine = signal(1);
   protected readonly lineNumbers = computed(() =>
     Array.from({ length: this.code().split(/\r?\n/).length }, (_, index) => index + 1),
@@ -52,6 +53,7 @@ export class CodeEditor {
   protected onScroll(event: Event): void {
     const target = event.target as HTMLTextAreaElement;
     this.scrollTop.set(target.scrollTop);
+    this.scrollLeft.set(target.scrollLeft);
     this.syncGutterScroll(target.scrollTop);
   }
 

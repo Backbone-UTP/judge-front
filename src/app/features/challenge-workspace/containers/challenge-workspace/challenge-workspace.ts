@@ -6,6 +6,7 @@ import { CodeEditor } from '../../components/code-editor/code-editor';
 import { ProblemContent } from '../../components/problem-content/problem-content';
 import { ChallengeWorkspaceState } from '../../state/challenge-workspace.state';
 import { AuthFacade } from '../../../auth/state/auth-facade';
+import { isChallengeLanguage } from '../../types/challenge.types';
 
 @Component({
   selector: 'app-challenge-workspace',
@@ -24,6 +25,14 @@ export class ChallengeWorkspaceContainer {
 
   tabChanges(tab: string): void {
     this.tabActive.set(tab);
+  }
+
+  selectLanguage(event: Event): void {
+    const target = event.target as HTMLSelectElement;
+
+    if (isChallengeLanguage(target.value)) {
+      this.challengeWorkspaceState.selectLanguage(target.value);
+    }
   }
 
   logout(): void {
