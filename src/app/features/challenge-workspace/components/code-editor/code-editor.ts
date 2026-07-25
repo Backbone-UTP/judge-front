@@ -24,7 +24,7 @@ export class CodeEditor {
   readonly language = input.required<ChallengeLanguage>();
   readonly codeChange = output<string>();
 
-  private readonly lineHeightPx = 24;
+  private readonly lineHeightPx = 26;
   private readonly lineGutter = viewChild<ElementRef<HTMLDivElement>>('lineGutter');
 
   protected readonly scrollTop = signal(0);
@@ -73,7 +73,7 @@ export class CodeEditor {
     const keywordPattern = this.getKeywordPattern(language);
     const commentPattern = language === 'python' ? /(#.*)$/gm : /(\/\/.*)$/gm;
     const protectedTokens: string[] = [];
-    let parsedCode = escapedCode.replace(/(["'`](?:\\.|(?!\1).)*\1)/g, (value) =>
+    let parsedCode = escapedCode.replace(/(['"`])(?:\\.|(?!\1).)*\1/g, (value) =>
       this.createTokenPlaceholder(value, 'token-string', protectedTokens),
     );
 

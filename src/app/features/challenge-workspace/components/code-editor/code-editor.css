@@ -80,6 +80,11 @@
   overflow: auto;
 }
 
+.editor-input:focus-visible {
+  outline: 2px solid #fac738;
+  outline-offset: -2px;
+}
+
 .editor-input::selection {
   background: rgba(255, 255, 255, 0.16);
 }

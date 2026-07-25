@@ -29,6 +29,7 @@ export class ChallengeWorkspaceContainer {
   logout(): void {
     this.authFacade.logout().subscribe({
       next: () => {
+        this.challengeWorkspaceState.resetWorkspace();
         void this.router.navigateByUrl('/login');
       },
     });

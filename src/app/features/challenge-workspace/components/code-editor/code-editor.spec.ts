@@ -59,4 +59,15 @@ describe('CodeEditor', () => {
 
     expect(highlightedCode).toContain('token-keyword');
   });
+
+  it('should keep // inside string literals from being parsed as comments', () => {
+    fixture.componentRef.setInput('code', 'const url = "https://example.com/path";');
+    fixture.detectChanges();
+
+    const nativeElement = fixture.nativeElement as HTMLElement;
+    const highlightedCode = nativeElement.querySelector('.editor-highlight code')?.innerHTML ?? '';
+
+    expect(highlightedCode).toContain('token-string');
+    expect(highlightedCode).not.toContain('token-comment');
+  });
 });

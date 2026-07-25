@@ -27,4 +27,9 @@ export class ChallengeWorkspaceState {
       [activeLanguage]: code,
     }));
   }
+
+  resetWorkspace(): void {
+    this.selectedLanguage.set('javascript');
+    this.codeByLanguage.set({ ...challengeStarterCode });
+  }
 }

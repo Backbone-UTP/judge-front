@@ -30,4 +30,14 @@ describe('ChallengeWorkspaceState', () => {
     state.selectLanguage('javascript');
     expect(state.code()).toBe('const custom = 1;');
   });
+
+  it('should reset to starter code and default language', () => {
+    state.selectLanguage('python');
+    state.updateCode('print("custom")');
+
+    state.resetWorkspace();
+
+    expect(state.selectedLanguage()).toBe('javascript');
+    expect(state.code()).toContain('function twoSum');
+  });
 });
