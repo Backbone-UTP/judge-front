@@ -1,22 +1,49 @@
 @if (executionState.status() === 'running') {
 
 <section class="results-panel-running">
-  <h3>EVALUATING SOLUTION</h3>
-  <p>Test Results</p>
+  <div class="running-header">
+    <div class="running-line"></div>
 
-  <ul>
+    <div class="running-info">
+      <h3>EVALUATING SOLUTION</h3>
+      <p>Please wait while we run your code against all test cases.</p>
+
+      <div class="progress-section">
+        <div class="progress-header">
+          <span>EVALUATING PROGRESS</span>
+          <span>75%</span>
+        </div>
+
+        <div class="progress-bar">
+          <div class="progress-fill"></div>
+        </div>
+
+        <div class="progress-footer">
+          <span>ELAPSED: 3.4s</span>
+          <span>TARGET: &lt; 2.0s</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="test-results-title">
+    TEST RESULTS
+  </div>
+
+  <ul class="test-results-list">
     @for (case of cases; track case) {
-      <li>Test case {{ case }}</li>
-    } @empty {
-      <li>No hay elementos en la lista.</li>
+    <li class="test-case">
+      <span class="icon">✓</span>
+      Test Case {{ case }}
+    </li>
     }
   </ul>
 </section>
 
 } @else {
 
-<section class="results-panel" aria-label="Test results" aria-live="polite">
-  <div class="results-tabs" role="tablist" aria-label="Result mode">
+<section class="results-panel" [class.collapsed]="collapsed()" aria-label="Test results" aria-live="polite">
+  <div class="results-tabs" (click)="togglepanel()" role="tablist" aria-label="Result mode">
     <button class="results-tab results-tab-active" type="button" role="tab" aria-selected="true">
       <span aria-hidden="true"></span>
       Test Results
@@ -36,10 +63,7 @@
         <span aria-hidden="true"></span>Case 2
       </button>
 
-      <button
-        class="test-case"
-        [class.test-case-failed]="executionState.status() === 'error'"
-        type="button">
+      <button class="test-case" [class.test-case-failed]="executionState.status() === 'error'" type="button">
         <span aria-hidden="true"></span>Case 3
       </button>
 

@@ -1,6 +1,7 @@
 import { Component, inject, signal } from '@angular/core';
 import { ExecutionStateService } from '../../services/execution-state.service';
 import { ExecutionResult } from '../../types/challenge.types/challenge.types';
+import { __values } from 'tslib';
 
 @Component({
   selector: 'app-results-panel',
@@ -15,4 +16,8 @@ export class ResultsPanel {
   message: '',
   output: ''
 });
+  collapsed = signal(false);
+  togglepanel() {
+    this.collapsed.update(value => !value);
+  }
 }
