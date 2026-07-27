@@ -6,7 +6,8 @@ import { CodeEditor } from '../../components/code-editor/code-editor';
 import { ProblemContent } from '../../components/problem-content/problem-content';
 import { ChallengeWorkspaceState } from '../../state/challenge-workspace.state';
 import { AuthFacade } from '../../../auth/state/auth-facade';
-import { isChallengeLanguage } from '../../types/challenge.types';
+import { isChallengeLanguage, type ChallengeProblemDto } from '../../types/challenge.types';
+import challengeData from '../../fixtures/two-sum.challenge.json';
 
 @Component({
   selector: 'app-challenge-workspace',
@@ -22,6 +23,7 @@ export class ChallengeWorkspaceContainer {
 
   private readonly router = inject(Router);
   readonly tabActive = signal('Description');
+  readonly challenge = signal<ChallengeProblemDto>(challengeData as ChallengeProblemDto);
 
   tabChanges(tab: string): void {
     this.tabActive.set(tab);

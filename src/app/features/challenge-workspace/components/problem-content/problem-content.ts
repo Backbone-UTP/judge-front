@@ -1,9 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import challengeData from '../../fixtures/two-sum.challenge.json';
 import { ExampleBlock } from '../example-block/example-block';
 import { ConstraintsList } from '../constraints-list/constraints-list';
-import type { ChallengeExampleDto, ChallengeConstraintDto } from '../../types/challenge.types';
+import type { ChallengeProblemDto } from '../../types/challenge.types';
 
 @Component({
   selector: 'app-problem-content',
@@ -13,11 +12,5 @@ import type { ChallengeExampleDto, ChallengeConstraintDto } from '../../types/ch
   styleUrls: ['./problem-content.css'],
 })
 export class ProblemContent {
-  readonly challenge = challengeData as {
-    title: string;
-    descriptionParagraphs: string[];
-    examples: ChallengeExampleDto[];
-    constraints: ChallengeConstraintDto[];
-    editorSnippet?: string;
-  };
+  readonly challenge = input.required<ChallengeProblemDto>();
 }

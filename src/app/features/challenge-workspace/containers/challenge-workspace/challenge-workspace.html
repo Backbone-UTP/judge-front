@@ -33,7 +33,7 @@
   <main class="workspace-main">
     @if (tabActive() === 'Description') {
       <section class="workspace-panel workspace-problem">
-        <app-problem-content></app-problem-content>
+        <app-problem-content [challenge]="challenge()"></app-problem-content>
       </section>
     } @else if (tabActive() === 'Submissions') {
       <section class="workspace-panel workspace-problem"></section>
