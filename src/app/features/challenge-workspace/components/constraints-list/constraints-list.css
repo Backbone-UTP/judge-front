@@ -49,6 +49,8 @@
   font-weight: 400;
   line-height: 16px;
   color: #fac738;
+  word-break: break-word;
+  max-width: 100%;
 }
 
 .constraint-plain {

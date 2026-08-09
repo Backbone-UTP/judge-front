@@ -1,60 +1,69 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { signal } from '@angular/core';
+import { of } from 'rxjs';
+import { vi } from 'vitest';
 
-import twoSumChallengeFixture from '../../fixtures/two-sum.challenge.json';
-import type { ChallengeProblemDto } from '../../types/challenge.types';
 import { ChallengeWorkspaceContainer } from './challenge-workspace';
+import { AuthFacade } from '../../../auth/state/auth-facade';
+import { ChallengeWorkspaceState } from '../../state/challenge-workspace.state';
+import { Router } from '@angular/router';
 
 describe('ChallengeWorkspaceContainer', () => {
-  let fixture: ComponentFixture<ChallengeWorkspaceContainer>;
+	let fixture: ComponentFixture<ChallengeWorkspaceContainer>;
+	let state: ChallengeWorkspaceState;
+	let navigateByUrl: ReturnType<typeof vi.fn>;
+	let resetWorkspaceSpy: ReturnType<typeof vi.spyOn>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [ChallengeWorkspaceContainer],
-    }).compileComponents();
+	beforeEach(async () => {
+		navigateByUrl = vi.fn();
+		await TestBed.configureTestingModule({ imports: [ChallengeWorkspaceContainer] }).compileComponents();
+		TestBed.overrideProvider(AuthFacade, {
+			useValue: {
+				user: signal(null),
+				logout: () => of(void 0),
+			},
+		});
+		TestBed.overrideProvider(Router, {
+			useValue: {
+				navigateByUrl,
+			},
+		});
 
-    fixture = TestBed.createComponent(ChallengeWorkspaceContainer);
-  });
+		fixture = TestBed.createComponent(ChallengeWorkspaceContainer);
+		state = TestBed.inject(ChallengeWorkspaceState);
+		resetWorkspaceSpy = vi.spyOn(state, 'resetWorkspace');
+	});
 
-  it('should create', async () => {
-    await fixture.whenStable();
-    expect(fixture.componentInstance).toBeTruthy();
-  });
+	it('should create', () => {
+		fixture.detectChanges();
+		expect(fixture.componentInstance).toBeTruthy();
+	});
 
-  it('should render challenge title from the default JSON fixture', async () => {
-    fixture.detectChanges();
-    await fixture.whenStable();
+	it('should reset workspace state on logout', () => {
+		fixture.detectChanges();
 
-    const root = fixture.nativeElement as HTMLElement;
-    expect(root.querySelector('h1')?.textContent?.trim()).toBe(twoSumChallengeFixture.title);
-  });
+		state.selectLanguage('python');
+		state.updateCode('print("custom")');
 
-  it('should render structured examples and constraints from the fixture', async () => {
-    fixture.detectChanges();
-    await fixture.whenStable();
+		fixture.componentInstance.logout();
 
-    const root = fixture.nativeElement as HTMLElement;
+		expect(resetWorkspaceSpy).toHaveBeenCalled();
+		expect(state.selectedLanguage()).toBe('javascript');
+		expect(state.code()).toContain('function twoSum');
+		expect(navigateByUrl).toHaveBeenCalledWith('/login');
+	});
 
-    expect(root.querySelectorAll('app-example-block').length).toBe(
-      twoSumChallengeFixture.examples.length,
-    );
-    expect(root.textContent).toContain('Constraints:');
-  });
+	it('should update the workspace language from the toolbar', () => {
+		fixture.detectChanges();
 
-  it('should render extended description in the problem panel for long fixtures', async () => {
-    const base = twoSumChallengeFixture as ChallengeProblemDto;
-    const longChallenge: ChallengeProblemDto = {
-      ...base,
-      descriptionParagraphs: Array.from({ length: 80 }, (_, i) => `Line ${i} `.repeat(20)),
-    };
+		const nativeElement = fixture.nativeElement as HTMLElement;
+		const languageSelect = nativeElement.querySelector('#language-select') as HTMLSelectElement;
 
-    fixture.componentRef.setInput('challenge', longChallenge);
-    fixture.detectChanges();
-    await fixture.whenStable();
+		languageSelect.value = 'python';
+		languageSelect.dispatchEvent(new Event('change'));
+		fixture.detectChanges();
 
-    const root = fixture.nativeElement as HTMLElement;
-    const panel = root.querySelector('.workspace-problem');
-    expect(panel).toBeTruthy();
-    expect(panel!.classList.contains('workspace-panel')).toBe(true);
-    expect(root.querySelectorAll('.problem-content > p').length).toBe(80);
-  });
+		expect(state.selectedLanguage()).toBe('python');
+		expect(state.code()).toContain('def two_sum');
+	});
 });

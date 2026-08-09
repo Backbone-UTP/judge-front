@@ -1,0 +1,21 @@
+<div class="problem-content">
+  <h1>{{ challenge().title }}</h1>
+
+  <div class="problem-description">
+    @for (p of challenge().descriptionParagraphs; track p) {
+      <p [innerHTML]="p"></p>
+    }
+  </div>
+
+  <div class="problem-examples">
+    <h2>Examples</h2>
+    @for (ex of challenge().examples; track $index) {
+      <app-example-block [example]="ex" [index]="$index + 1"></app-example-block>
+    }
+  </div>
+
+  <div class="problem-constraints">
+    <h3>Constraints</h3>
+    <app-constraints-list [constraints]="challenge().constraints"></app-constraints-list>
+  </div>
+</div>

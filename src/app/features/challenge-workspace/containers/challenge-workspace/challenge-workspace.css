@@ -35,7 +35,7 @@
 .top-header,
 .workspace-toolbar {
   border-bottom: 1px solid #2a2a2a;
-  }
+}
 
 .logo {
   font-size: 1rem;
@@ -45,15 +45,57 @@
 .top-nav span {
   color: #b6b6b8;
   font-size: 14px;
-} 
+}
 
-.language-tab span {
-  display: inline-block;
-  padding: 4px 10px;
+.language-tab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.problem-tabs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.problem-tabs .tab {
+  background: transparent;
+  border: 1px solid transparent;
+  color: #d4d4d4;
+  padding: 6px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.problem-tabs .tab:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.problem-tabs .tab.active {
+  background: #17171a;
+  border: 1px solid #2a2a2a;
+  color: #fac738;
+}
+
+.language-tab label {
+  font-size: 13px;
+  color: #b6b6b8;
+}
+
+.language-tab select {
   border: 1px solid #2a2a2a;
   border-radius: 6px;
+  background: #0d0d0f;
   color: #d4d4d4;
+  padding: 4px 10px;
   font-size: 13px;
+}
+
+.language-tab select:focus-visible {
+  outline: 2px solid #facc15;
+  outline-offset: 1px;
 }
 
 .workspace-main {
@@ -65,6 +107,7 @@
 
 .workspace-panel {
   min-height: 0;
+  min-width: 0;
   overflow: auto;
   padding: 20px;
   background: #141416;
@@ -75,7 +118,13 @@
 }
 
 .workspace-editor {
-  background: #0d0d0f;
+  background: #0a0a0a;
+  padding: 0;
+}
+
+.editor-content {
+  height: 100%;
+  min-width: 0;
 }
 
 .problem-content h1 {
@@ -89,21 +138,66 @@
   color: #d4d4d4;
 }
 
-:host ::ng-deep .problem-content p strong {
-  color: #fac738;
-  background-color: #2b2b2b;
-  border: 1px solid #3a3a3a;
-  border-radius: 4px;
-  padding: 1px 5px;
+.example-card {
+  margin-top: 14px;
+  padding: 12px;
+  border: 1px solid #2a2a2a;
+  border-radius: 8px;
+  background: #17171a;
 }
 
-.editor-content pre {
+.example-card pre {
   margin-top: 8px;
   white-space: pre-wrap;
   word-break: break-word;
   color: #d4d4d4;
   font-size: 14px;
   line-height: 1.45;
+}
+
+.problem-content ul {
+  margin-top: 8px;
+  padding-left: 20px;
+}
+
+.problem-content li {
+  margin-bottom: 6px;
+  color: #d4d4d4;
+}
+
+.problem-content h1 {
+  margin-bottom: 12px;
+  font-size: 1.8rem;
+}
+
+.problem-content p {
+  margin-bottom: 10px;
+  line-height: 1.5;
+  color: #d4d4d4;
+}
+
+.workspace-toolbar {
+  border-bottom: 1px solid #2a2a2a;
+  gap: 12px;
+  min-width: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.workspace-toolbar::-webkit-scrollbar {
+  display: none;
+}
+
+:host ::ng-deep .problem-content p strong {
+  color: #fac738;
+  background-color: #2b2b2b;
+  border: 1px solid #3a3a3a;
+  border-radius: 4px;
+  padding: 1px 5px;
+  word-break: break-word;
+  max-width: 100%;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .workspace-footer {
@@ -129,6 +223,16 @@
 }
 
 @media (max-width: 900px) {
+  .workspace-layout {
+    grid-template-rows: auto auto 1fr auto;
+  }
+
+  .top-header,
+  .workspace-toolbar,
+  .workspace-footer {
+    padding: 8px 12px;
+  }
+
   .workspace-main {
     grid-template-columns: 1fr;
   }
@@ -136,5 +240,10 @@
   .workspace-problem {
     border-right: 0;
     border-bottom: 1px solid #2a2a2a;
+    max-height: 50vh;
+  }
+
+  .workspace-editor {
+    min-height: 350px;
   }
 }

@@ -10,7 +10,18 @@
     <app-challenge-tabs (ontabclicker)="tabChanges($event)" [tabActive]="tabActive()">
     </app-challenge-tabs>
     <div class="language-tab">
-      <span>JavaScript</span>
+      <label for="language-select">Language</label>
+      <select
+        id="language-select"
+        [value]="challengeWorkspaceState.selectedLanguage()"
+        (change)="selectLanguage($event)"
+      >
+        @for (language of challengeWorkspaceState.languages; track language) {
+          <option [value]="language">
+            {{ language === 'javascript' ? 'JavaScript' : language === 'python' ? 'Python' : 'TypeScript' }}
+          </option>
+        }
+      </select>
     </div>
     @if (authFacade.user(); as user) {
       <span>{{ user.displayName }}</span>
@@ -22,25 +33,21 @@
   <main class="workspace-main">
     @if (tabActive() === 'Description') {
       <section class="workspace-panel workspace-problem">
-        <div class="problem-content">
-          <h1>{{ challenge().title }}</h1>
-          @for (paragraph of challenge().descriptionParagraphs; track $index) {
-            <p [innerHTML]="paragraph"></p>
-          }
-          @for (example of challenge().examples; track $index) {
-            <app-example-block [example]="example" [index]="$index + 1" />
-          }
-          <app-constraints-list [constraints]="challenge().constraints" />
-        </div>
+        <app-problem-content [challenge]="challenge()"></app-problem-content>
       </section>
     } @else if (tabActive() === 'Submissions') {
       <section class="workspace-panel workspace-problem"></section>
     } @else if (tabActive() === 'Hints') {
       <section class="workspace-panel workspace-problem"></section>
     }
+
     <section class="workspace-panel workspace-editor">
       <div class="editor-content">
-        <pre><code>{{ challenge().editorSnippet }}</code></pre>
+        <app-code-editor
+          [code]="challengeWorkspaceState.code()"
+          [language]="challengeWorkspaceState.selectedLanguage()"
+          (codeChange)="challengeWorkspaceState.updateCode($event)"
+        ></app-code-editor>
       </div>
     </section>
   </main>
