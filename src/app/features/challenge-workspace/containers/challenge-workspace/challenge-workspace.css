@@ -35,7 +35,7 @@
 .top-header,
 .workspace-toolbar {
   border-bottom: 1px solid #2a2a2a;
-  }
+}
 
 .logo {
   font-size: 1rem;
@@ -45,7 +45,7 @@
 .top-nav span {
   color: #b6b6b8;
   font-size: 14px;
-} 
+}
 
 .language-tab {
   display: flex;
@@ -70,7 +70,7 @@
 }
 
 .problem-tabs .tab:hover {
-  background: rgba(255,255,255,0.02);
+  background: rgba(255, 255, 255, 0.02);
 }
 
 .problem-tabs .tab.active {
@@ -176,12 +176,28 @@
   color: #d4d4d4;
 }
 
+.workspace-toolbar {
+  border-bottom: 1px solid #2a2a2a;
+  gap: 12px;
+  min-width: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.workspace-toolbar::-webkit-scrollbar {
+  display: none;
+}
+
 :host ::ng-deep .problem-content p strong {
   color: #fac738;
   background-color: #2b2b2b;
   border: 1px solid #3a3a3a;
   border-radius: 4px;
   padding: 1px 5px;
+  word-break: break-word;
+  max-width: 100%;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .workspace-footer {
@@ -207,6 +223,16 @@
 }
 
 @media (max-width: 900px) {
+  .workspace-layout {
+    grid-template-rows: auto auto 1fr auto;
+  }
+
+  .top-header,
+  .workspace-toolbar,
+  .workspace-footer {
+    padding: 8px 12px;
+  }
+
   .workspace-main {
     grid-template-columns: 1fr;
   }
@@ -214,5 +240,10 @@
   .workspace-problem {
     border-right: 0;
     border-bottom: 1px solid #2a2a2a;
+    max-height: 50vh;
+  }
+
+  .workspace-editor {
+    min-height: 350px;
   }
 }
