@@ -18,7 +18,13 @@
       >
         @for (language of challengeWorkspaceState.languages; track language) {
           <option [value]="language">
-            {{ language === 'javascript' ? 'JavaScript' : language === 'python' ? 'Python' : 'TypeScript' }}
+            {{
+              language === 'javascript'
+                ? 'JavaScript'
+                : language === 'python'
+                  ? 'Python'
+                  : 'TypeScript'
+            }}
           </option>
         }
       </select>

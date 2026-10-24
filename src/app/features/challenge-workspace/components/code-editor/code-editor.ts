@@ -87,7 +87,14 @@ export class CodeEditor {
       .replace(/\b(\d+)\b/g, '<span class="token-number">$1</span>')
       .replace(keywordPattern, '<span class="token-keyword">$1</span>');
 
-    return parsedCode.replace(/@@TOKEN_(\d+)@@/g, (_, index) => protectedTokens[Number(index)]);
+    while (/@@TOKEN_(\d+)@@/.test(parsedCode)) {
+      parsedCode = parsedCode.replace(
+        /@@TOKEN_(\d+)@@/g,
+        (_, index) => protectedTokens[Number(index)] ?? '',
+      );
+    }
+
+    return parsedCode;
   }
 
   private getKeywordPattern(language: ChallengeLanguage): RegExp {

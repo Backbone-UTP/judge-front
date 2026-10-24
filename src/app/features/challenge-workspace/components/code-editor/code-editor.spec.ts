@@ -82,4 +82,22 @@ describe('CodeEditor', () => {
     expect(highlightedCode).toContain('token-string');
     expect(highlightedCode).not.toContain('token-comment');
   });
+
+  it('should mark the highlight layer as aria-hidden for accessibility', () => {
+    const nativeElement = fixture.nativeElement as HTMLElement;
+    const editorHighlight = nativeElement.querySelector('.editor-highlight');
+
+    expect(editorHighlight?.getAttribute('aria-hidden')).toBe('true');
+  });
+
+  it('should avoid leaking token placeholders when comments contain quotes', () => {
+    fixture.componentRef.setInput('code', '// return "quoted text"');
+    fixture.detectChanges();
+
+    const nativeElement = fixture.nativeElement as HTMLElement;
+    const highlightedCode = nativeElement.querySelector('.editor-highlight code')?.innerHTML ?? '';
+
+    expect(highlightedCode).not.toContain('@@TOKEN_');
+    expect(highlightedCode).toContain('quoted text');
+  });
 });

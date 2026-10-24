@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
+import { finalize } from 'rxjs';
 
 import { ChallengeTabs } from '../../../../components/challenge-tabs/challenge-tabs';
 import { CodeEditor } from '../../components/code-editor/code-editor';
@@ -38,11 +39,18 @@ export class ChallengeWorkspaceContainer {
   }
 
   logout(): void {
-    this.authFacade.logout().subscribe({
-      next: () => {
-        this.challengeWorkspaceState.resetWorkspace();
-        void this.router.navigateByUrl('/login');
-      },
-    });
+    this.authFacade
+      .logout()
+      .pipe(
+        finalize(() => {
+          this.challengeWorkspaceState.resetWorkspace();
+          void this.router.navigateByUrl('/login');
+        }),
+      )
+      .subscribe({
+        error: (error: unknown) => {
+          console.error('Logout failed:', error);
+        },
+      });
   }
 }
