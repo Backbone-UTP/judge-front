@@ -26,6 +26,8 @@
   border-left: 2px solid #333333;
   border-radius: 0 8px 8px 0;
   background: #0a0a0a;
+  overflow-x: auto;
+  max-width: 100%;
 }
 
 .example-line {
@@ -34,6 +36,8 @@
   font-size: 12px;
   font-weight: 400;
   line-height: 19.5px;
+  word-break: break-word;
+  white-space: pre-wrap;
 }
 
 .example-key {

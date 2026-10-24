@@ -1,0 +1,127 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+.code-editor {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  height: 100%;
+  overflow: hidden;
+  background: #0a0a0a;
+}
+
+.line-gutter {
+  overflow: hidden;
+  background: #0a0a0a;
+  border-right: 1px solid #333333;
+  color: #525252;
+  font-family:
+    ui-monospace, SFMono-Regular, 'JetBrains Mono', 'Fira Code', Consolas, 'Roboto Mono', monospace;
+  padding: 16px 14px 16px 6px;
+}
+
+.line-number {
+  height: 26px;
+  line-height: 26px;
+  text-align: right;
+  font-size: 13px;
+}
+
+.line-number--active {
+  color: #fac738;
+}
+
+.editor-surface {
+  position: relative;
+  overflow: hidden;
+  background: #0a0a0a;
+}
+
+.editor-active-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 16px;
+  height: 26px;
+  background: rgba(255, 255, 255, 0.04);
+  border-left: 3px solid #ffd24d;
+  box-sizing: border-box;
+  pointer-events: none;
+}
+
+.editor-highlight,
+.editor-highlight code,
+.editor-input {
+  font-family: ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', 'Courier New', monospace;
+  font-size: 15px;
+  line-height: 26px;
+  font-weight: 400;
+  letter-spacing: 0;
+  word-spacing: 0;
+  tab-size: 2;
+  -moz-tab-size: 2;
+  white-space: pre;
+  font-variant-ligatures: none;
+  font-feature-settings:
+    'liga' 0,
+    'calt' 0;
+}
+
+.editor-highlight,
+.editor-input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 16px;
+  border: 0;
+  box-sizing: border-box;
+  resize: none;
+  outline: none;
+}
+
+.editor-highlight {
+  pointer-events: none;
+  color: #e0e0e0;
+  overflow: hidden;
+}
+
+.editor-highlight code {
+  display: block;
+  min-height: 100%;
+}
+
+.editor-input {
+  background: transparent;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  caret-color: rgba(255, 255, 255, 0.8);
+  overflow: auto;
+}
+
+.editor-input:focus-visible {
+  outline: 2px solid #fac738;
+  outline-offset: -2px;
+}
+
+.editor-input::selection {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+:host ::ng-deep .token-keyword {
+  color: #fac738;
+}
+
+:host ::ng-deep .token-string {
+  color: #ce9178;
+}
+
+:host ::ng-deep .token-number {
+  color: #b5cea8;
+}
+
+:host ::ng-deep .token-comment {
+  color: #6a9955;
+}

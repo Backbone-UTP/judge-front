@@ -2,6 +2,7 @@ import { Component, input, output } from '@angular/core';
 
 @Component({
   selector: 'app-challenge-tabs',
+  standalone: true,
   imports: [],
   templateUrl: './challenge-tabs.html',
   styleUrl: './challenge-tabs.css'
