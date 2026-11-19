@@ -14,28 +14,40 @@
   box-sizing: border-box;
 }
 
+/* A fixed height lets each panel scroll on its own instead of growing the page. */
 .workspace-layout {
-  min-height: 100dvh;
+  height: 100dvh;
   display: grid;
   grid-template-rows: 56px 48px 1fr 56px;
   overflow: hidden;
 }
 
-.top-header,
-.workspace-toolbar,
-.workspace-footer {
+.top-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 16px;
-  background: #17171a;
-  border-color: #2a2a2a;
+  background: #262626;
+  border-bottom: 2px solid #333333;
 }
 
-.top-header,
 .workspace-toolbar {
-  border-bottom: 1px solid #2a2a2a;
-  }
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 48px;
+  background: #262626;
+  border-bottom: 2px solid #333333;
+  border-right: 1px solid #333333;
+}
+
+.workspace-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 16px;
+  background: #17171a;
+  border-top: 2px solid #333333;
+}
 
 .logo {
   font-size: 1rem;
@@ -45,15 +57,6 @@
 .top-nav span {
   color: #b6b6b8;
   font-size: 14px;
-} 
-
-.language-tab span {
-  display: inline-block;
-  padding: 4px 10px;
-  border: 1px solid #2a2a2a;
-  border-radius: 6px;
-  color: #d4d4d4;
-  font-size: 13px;
 }
 
 .workspace-main {
@@ -71,11 +74,14 @@
 }
 
 .workspace-problem {
-  border-right: 1px solid #2a2a2a;
+  border-right: 1px solid #333333;
 }
 
 .workspace-editor {
+  padding: 0;
+  overflow: hidden;
   background: #0d0d0f;
+  border-left: 1px solid #333333;
 }
 
 .problem-content h1 {
@@ -95,15 +101,6 @@
   border: 1px solid #3a3a3a;
   border-radius: 4px;
   padding: 1px 5px;
-}
-
-.editor-content pre {
-  margin-top: 8px;
-  white-space: pre-wrap;
-  word-break: break-word;
-  color: #d4d4d4;
-  font-size: 14px;
-  line-height: 1.45;
 }
 
 .workspace-footer {
@@ -129,12 +126,21 @@
 }
 
 @media (max-width: 900px) {
+  .workspace-layout {
+    height: auto;
+    min-height: 100dvh;
+  }
+
   .workspace-main {
     grid-template-columns: 1fr;
   }
 
+  .workspace-editor {
+    height: 60dvh;
+  }
+
   .workspace-problem {
     border-right: 0;
-    border-bottom: 1px solid #2a2a2a;
+    border: 1px solid #2a2a2a;
   }
 }
