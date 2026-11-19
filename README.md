@@ -6,6 +6,8 @@ Frontend generado con [Angular CLI](https://github.com/angular/angular-cli) 21.2
 
 Para instalación local, MCP (Figma y Angular CLI en el repo; GitHub en Cursor vía UI o config global) y convenciones del repo, lee **[Guía de desarrollo local y MCP](docs/development-setup.md)**.
 
+Antes de tomar un issue o abrir un PR, lee el **[Way of Work](docs/way-of-work.md)**: ramas, PRs, review y uso de IA.
+
 Resumen rápido desde la raíz del proyecto:
 
 ```bash
