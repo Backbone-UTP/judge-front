@@ -49,7 +49,7 @@ Cómo llevamos un issue desde "asignado" hasta `main` en `judge-front`. Si sigue
 
 ## Checks
 
-- [ ] `npx prettier --check .`
+- [ ] `npx prettier --check <archivos cambiados>`
 - [ ] `npx tsc --noEmit -p tsconfig.app.json`
 - [ ] `npm run test -- --watch=false`
 
@@ -59,10 +59,12 @@ Closes #N
 ## Checks antes del PR
 
 ```bash
-npx prettier --check .
+git diff --name-only main... | xargs npx prettier --check --ignore-unknown
 npx tsc --noEmit -p tsconfig.app.json
 npm run test -- --watch=false
 ```
+
+El CI corre estos mismos tres checks en cada PR y deben pasar antes del merge. Prettier solo revisa los archivos que tocaste: `main` todavía tiene archivos sin formato y se van corrigiendo a medida que cada PR los toca.
 
 Si alguno falla y no sabes por qué, abre igual el PR en draft y pregunta en él. Preguntar no es un problema; esconder un fallo, sí.
 
