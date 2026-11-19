@@ -7,15 +7,14 @@
   </header>
 
   <div class="workspace-toolbar">
-    <app-challenge-tabs
-    (ontabclicker)="tabChanges($event)"
-    [tabActive]="tabActive()">  
+    <app-challenge-tabs (ontabclicker)="tabChanges($event)" [tabActive]="tabActive()">
     </app-challenge-tabs>
 
     <app-editor-toolbar
-        [languages]="state.languages"
-        [selectedLanguage]="state.selectedLanguage()"
-        (languageChange)="state.setLanguage($event)">
+      [languages]="state.languages"
+      [selectedLanguage]="state.selectedLanguage()"
+      (languageChange)="state.setLanguage($event)"
+    >
     </app-editor-toolbar>
   </div>
 
@@ -39,11 +38,11 @@
       <section class="workspace-panel workspace-problem"></section>
     }
     <section class="workspace-panel workspace-editor">
-
-      
-      <div class="editor-content">
-        <pre><code>{{ challenge().editorSnippet }}</code></pre>
-      </div>
+      <app-code-editor
+        [code]="state.code()"
+        [language]="state.selectedLanguage()"
+        (codeChange)="state.updateCode($event)"
+      />
     </section>
   </main>
 

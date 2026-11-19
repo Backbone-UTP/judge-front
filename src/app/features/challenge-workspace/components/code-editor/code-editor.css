@@ -1,0 +1,108 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+.code-editor {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  height: 100%;
+  overflow: hidden;
+  background: #0a0a0a;
+}
+
+.line-gutter {
+  overflow: hidden;
+  border-right: 1px solid #333333;
+  color: #525252;
+  font-family: ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', monospace;
+  padding: 16px 14px 16px 6px;
+}
+
+.line-number {
+  height: 26px;
+  line-height: 26px;
+  text-align: right;
+  font-size: 13px;
+}
+
+.line-number--active {
+  color: #fac738;
+}
+
+.editor-surface {
+  position: relative;
+  overflow: hidden;
+}
+
+.editor-active-line {
+  position: absolute;
+  top: 16px;
+  left: 0;
+  right: 0;
+  height: 26px;
+  background: rgba(255, 255, 255, 0.04);
+  border-left: 3px solid #ffd24d;
+  box-sizing: border-box;
+  pointer-events: none;
+}
+
+/* Both layers must share every metric, or the caret drifts from the colored text. */
+.editor-highlight,
+.editor-input {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  padding: 16px;
+  border: 0;
+  box-sizing: border-box;
+  font-family: ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', monospace;
+  font-size: 15px;
+  line-height: 26px;
+  letter-spacing: 0;
+  tab-size: 2;
+  white-space: pre;
+  font-variant-ligatures: none;
+}
+
+/* Same overflow as the textarea, so scrollbars take the same space and the
+   scroll ranges match. The textarea's scrollbars are drawn on top of these. */
+.editor-highlight {
+  overflow: auto;
+  pointer-events: none;
+  color: #e0e0e0;
+}
+
+.editor-input {
+  resize: none;
+  overflow: auto;
+  background: transparent;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  caret-color: rgba(255, 255, 255, 0.8);
+}
+
+.editor-input:focus-visible {
+  outline: 2px solid #fac738;
+  outline-offset: -2px;
+}
+
+.editor-input::selection {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.editor-highlight ::ng-deep .token-keyword {
+  color: #fac738;
+}
+
+.editor-highlight ::ng-deep .token-string {
+  color: #ce9178;
+}
+
+.editor-highlight ::ng-deep .token-number {
+  color: #b5cea8;
+}
+
+.editor-highlight ::ng-deep .token-comment {
+  color: #6a9955;
+}

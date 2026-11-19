@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject, input, signal } from '@angular/core';
+import { CodeEditor } from '../../components/code-editor/code-editor';
 import { EditorToolbar } from '../../components/editor-toolbar/editor-toolbar';
 import { ChallengeWorkspaceState } from '../../state/challenge-workspace.state';
 import { ConstraintsList } from '../../components/constraints-list/constraints-list';
@@ -11,7 +12,7 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-challenge-workspace',
-  imports: [ConstraintsList, ExampleBlock,ChallengeTabs,EditorToolbar],
+  imports: [ConstraintsList, ExampleBlock, ChallengeTabs, EditorToolbar, CodeEditor],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './challenge-workspace.html',
   styleUrl: './challenge-workspace.css',
@@ -20,23 +21,21 @@ export class ChallengeWorkspaceContainer {
   readonly authFacade = inject(AuthFacade);
   private readonly router = inject(Router);
 
-tabActive = signal('Description');
+  tabActive = signal('Description');
 
-readonly challenge = input<ChallengeProblemDto>(
-  twoSumChallengeFixture as ChallengeProblemDto
-);
+  readonly challenge = input<ChallengeProblemDto>(twoSumChallengeFixture as ChallengeProblemDto);
 
-readonly state = new ChallengeWorkspaceState();
+  readonly state = new ChallengeWorkspaceState();
 
-tabChanges(tab: string) {
-  this.tabActive.set(tab);
-}
+  tabChanges(tab: string) {
+    this.tabActive.set(tab);
+  }
 
-logout(): void {
-  this.authFacade.logout().subscribe({
-    next: () => {
-      void this.router.navigateByUrl('/login');
-    },
-  });
-}
+  logout(): void {
+    this.authFacade.logout().subscribe({
+      next: () => {
+        void this.router.navigateByUrl('/login');
+      },
+    });
+  }
 }

@@ -1,9 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 
 import { AuthRepository } from '../../../auth/data-access/auth.repository';
 import { FakeAuthRepository } from '../../../auth/data-access/fake-auth.repository';
+import { EditorToolbar } from '../../components/editor-toolbar/editor-toolbar';
 import twoSumChallengeFixture from '../../fixtures/two-sum.challenge.json';
-import type { ChallengeProblemDto } from '../../types/challenge.types';
+import { starterCodeByLanguage, type ChallengeProblemDto } from '../../types/challenge.types';
 import { ChallengeWorkspaceContainer } from './challenge-workspace';
 
 describe('ChallengeWorkspaceContainer', () => {
@@ -59,5 +61,28 @@ describe('ChallengeWorkspaceContainer', () => {
     expect(panel).toBeTruthy();
     expect(panel!.classList.contains('workspace-panel')).toBe(true);
     expect(root.querySelectorAll('.problem-content > p').length).toBe(80);
+  });
+
+  it('should load the starter of the language chosen in the toolbar', () => {
+    fixture.detectChanges();
+    const toolbar = fixture.debugElement.query(By.directive(EditorToolbar));
+
+    toolbar.componentInstance.languageChange.emit('python');
+    fixture.detectChanges();
+
+    const editor = fixture.nativeElement.querySelector('app-code-editor textarea');
+    expect(editor.value).toBe(starterCodeByLanguage.python);
+  });
+
+  it('should store what the user types in the feature state', () => {
+    fixture.detectChanges();
+    const editor = fixture.nativeElement.querySelector(
+      'app-code-editor textarea',
+    ) as HTMLTextAreaElement;
+
+    editor.value = 'function solve() { return 42; }';
+    editor.dispatchEvent(new Event('input'));
+
+    expect(fixture.componentInstance.state.code()).toBe('function solve() { return 42; }');
   });
 });
