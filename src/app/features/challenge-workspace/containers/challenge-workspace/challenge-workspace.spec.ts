@@ -1,5 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { AuthRepository } from '../../../auth/data-access/auth.repository';
+import { FakeAuthRepository } from '../../../auth/data-access/fake-auth.repository';
 import twoSumChallengeFixture from '../../fixtures/two-sum.challenge.json';
 import type { ChallengeProblemDto } from '../../types/challenge.types';
 import { ChallengeWorkspaceContainer } from './challenge-workspace';
@@ -10,6 +12,7 @@ describe('ChallengeWorkspaceContainer', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [ChallengeWorkspaceContainer],
+      providers: [{ provide: AuthRepository, useClass: FakeAuthRepository }],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ChallengeWorkspaceContainer);
