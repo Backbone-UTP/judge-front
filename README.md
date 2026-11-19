@@ -8,6 +8,8 @@ Para instalación local, MCP (Figma y Angular CLI en el repo; GitHub en Cursor v
 
 Antes de tomar un issue o abrir un PR, lee el **[Way of Work](docs/way-of-work.md)**: ramas, PRs, review y uso de IA.
 
+Las pantallas, componentes y tokens de diseño están en **[docs/design](docs/design/README.md)**.
+
 Resumen rápido desde la raíz del proyecto:
 
 ```bash
