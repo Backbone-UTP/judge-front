@@ -1,3 +1,8 @@
+export type LanguageId =
+  | 'javascript'
+  | 'python'
+  ;
+
 export interface ChallengeExampleDto {
   input: string;
   output: string;
