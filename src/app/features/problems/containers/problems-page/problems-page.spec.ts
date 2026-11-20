@@ -131,6 +131,35 @@ describe('ProblemsPage', () => {
     expect(rows(harness).length).toBe(20);
   });
 
+  it('should apply the same search again after the filters were cleared', async () => {
+    const harness = await render();
+    const type = async (value: string) => {
+      const input = root(harness).querySelector<HTMLInputElement>('input[type="search"]')!;
+      input.value = value;
+      input.dispatchEvent(new Event('input'));
+      await new Promise((resolve) => setTimeout(resolve, 350));
+      await settle(harness);
+    };
+
+    await type('zzz');
+    buttonNamed(harness, 'Clear filters').click();
+    await settle(harness);
+    await type('zzz');
+
+    expect(queryParams()).toEqual({ search: 'zzz' });
+  });
+
+  it('should move an out-of-range page to the last page', async () => {
+    const harness = await render('/problems?page=99');
+    await settle(harness);
+
+    expect(queryParams()).toEqual({ page: '3' });
+    expect(root(harness).querySelector('.pagination-summary')?.textContent?.trim()).toBe(
+      'Showing 41–45 of 45 problems',
+    );
+    expect(buttonNamed(harness, 'Next').disabled).toBe(true);
+  });
+
   it('should show an error with a retry button when loading fails', async () => {
     const harness = await render('/problems', { fail: true });
 

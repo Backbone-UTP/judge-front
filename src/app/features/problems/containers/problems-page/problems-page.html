@@ -76,7 +76,7 @@
           <button
             type="button"
             class="page-button"
-            [disabled]="query().page === pages().length"
+            [disabled]="query().page! >= pages().length"
             (click)="goToPage(query().page! + 1)"
           >
             Next

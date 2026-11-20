@@ -1,7 +1,14 @@
-import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  effect,
+  inject,
+  untracked,
+} from '@angular/core';
 import { rxResource, takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router, type ParamMap } from '@angular/router';
-import { debounceTime, distinctUntilChanged, map, Subject } from 'rxjs';
+import { debounceTime, map, Subject } from 'rxjs';
 
 import { ProblemsRepository } from '../../../../core/progress/data-access/progress.repositories';
 import type {
@@ -73,7 +80,7 @@ export class ProblemsPage {
 
   readonly summary = computed(() => {
     const result = this.result();
-    if (!result || result.total === 0) {
+    if (!result || result.items.length === 0) {
       return '';
     }
     const first = (result.page - 1) * result.pageSize + 1;
@@ -82,9 +89,20 @@ export class ProblemsPage {
   });
 
   constructor() {
+    // No distinctUntilChanged: after Clear filters the same term must apply again,
+    // and navigating to identical params is already a no-op.
     this.searchInput
-      .pipe(debounceTime(300), distinctUntilChanged(), takeUntilDestroyed())
+      .pipe(debounceTime(300), takeUntilDestroyed())
       .subscribe((search) => this.applyFilters({ search }));
+
+    // A shared or stale link can point past the last page; replace it so Back doesn't loop.
+    effect(() => {
+      const result = this.result();
+      const lastPage = this.pages().length;
+      if (result && result.total > 0 && result.page > lastPage) {
+        untracked(() => this.navigate({ ...this.query(), page: lastPage }, true));
+      }
+    });
   }
 
   onSearch(value: string): void {
@@ -103,9 +121,10 @@ export class ProblemsPage {
     this.navigate({});
   }
 
-  private navigate({ search, difficulty, status, page }: ProblemsQuery): void {
+  private navigate({ search, difficulty, status, page }: ProblemsQuery, replaceUrl = false): void {
     void this.router.navigate([], {
       relativeTo: this.route,
+      replaceUrl,
       queryParams: {
         search: search || null,
         difficulty: difficulty ?? null,
