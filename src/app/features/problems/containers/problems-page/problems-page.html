@@ -1,0 +1,88 @@
+<main class="problems-page">
+  <header class="page-header">
+    <div>
+      <h1 class="page-title">Problems</h1>
+      <p class="page-subtitle">Solve problems to earn points and keep your streak alive.</p>
+    </div>
+
+    @if (solved.hasValue()) {
+      @let solvedCounts = solved.value();
+      <div class="progress" aria-label="Solved problems by difficulty">
+        @for (difficulty of difficulties; track difficulty) {
+          <div class="progress-item" [attr.data-difficulty]="difficulty">
+            <span class="progress-value difficulty-{{ difficulty }}">
+              {{ solvedCounts[difficulty].solved }}/{{ solvedCounts[difficulty].total }}
+            </span>
+            <span class="progress-label">{{ difficultyLabels[difficulty] }}</span>
+          </div>
+        }
+      </div>
+    }
+  </header>
+
+  <app-problems-toolbar
+    [search]="query().search ?? ''"
+    [difficulty]="query().difficulty"
+    [status]="query().status"
+    (searchChange)="onSearch($event)"
+    (difficultyChange)="applyFilters({ difficulty: $event })"
+    (statusChange)="applyFilters({ status: $event })"
+  />
+
+  @if (problems.error()) {
+    <div class="state-message" role="alert">
+      <p>Couldn’t load the problems.</p>
+      <button type="button" class="secondary-button" (click)="problems.reload()">Retry</button>
+    </div>
+  } @else {
+    <app-problems-table [problems]="result()?.items ?? []" [loading]="problems.isLoading()" />
+
+    @if (result()?.total === 0) {
+      <div class="state-message" role="status">
+        @if (hasFilters()) {
+          <p>No problems match these filters.</p>
+          <button type="button" class="secondary-button" (click)="clearFilters()">
+            Clear filters
+          </button>
+        } @else {
+          <p>There are no problems yet.</p>
+        }
+      </div>
+    }
+
+    @if (summary()) {
+      <nav class="pagination" aria-label="Pagination">
+        <p class="pagination-summary">{{ summary() }}</p>
+        <div class="pagination-pages">
+          <button
+            type="button"
+            class="page-button"
+            [disabled]="query().page === 1"
+            (click)="goToPage(query().page! - 1)"
+          >
+            Previous
+          </button>
+          @for (page of pages(); track page) {
+            <button
+              type="button"
+              class="page-button"
+              [class.page-button--current]="page === query().page"
+              [attr.aria-current]="page === query().page ? 'page' : null"
+              (click)="goToPage(page)"
+            >
+              {{ page }}
+            </button>
+          }
+          <button
+            type="button"
+            class="page-button"
+            [disabled]="query().page! >= pages().length"
+            (click)="goToPage(query().page! + 1)"
+          >
+            Next
+          </button>
+        </div>
+      </nav>
+    }
+  }
+</main>

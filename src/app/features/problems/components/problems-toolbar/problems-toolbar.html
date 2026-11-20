@@ -1,0 +1,37 @@
+<div class="toolbar">
+  <label class="search">
+    <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true">
+      <circle cx="11" cy="11" r="8" />
+      <path d="m21 21-4.3-4.3" />
+    </svg>
+    <input
+      #searchInput
+      type="search"
+      class="search-input"
+      placeholder="Search problems by title"
+      aria-label="Search problems by title"
+      (input)="searchChange.emit($any($event.target).value)"
+    />
+  </label>
+
+  <div class="segmented" role="group" aria-label="Difficulty">
+    @for (option of difficultyOptions; track option.label) {
+      <button
+        type="button"
+        class="segment"
+        [class.segment--active]="option.value === difficulty()"
+        [attr.aria-pressed]="option.value === difficulty()"
+        (click)="difficultyChange.emit(option.value)"
+      >
+        {{ option.label }}
+      </button>
+    }
+  </div>
+
+  <select class="status-select" aria-label="Status" (change)="onStatus($any($event.target).value)">
+    <option value="" [selected]="!status()">All statuses</option>
+    @for (option of statusOptions; track option[0]) {
+      <option [value]="option[0]" [selected]="option[0] === status()">{{ option[1] }}</option>
+    }
+  </select>
+</div>

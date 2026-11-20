@@ -1,0 +1,89 @@
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+.search {
+  display: flex;
+  flex: 1 1 240px;
+  align-items: center;
+  gap: 8px;
+  height: 36px;
+  padding: 0 12px;
+  border: 1px solid #333333;
+  border-radius: 6px;
+  background: #1e1e1e;
+}
+
+.search:focus-within {
+  border-color: #fac738;
+}
+
+.search-icon {
+  width: 16px;
+  height: 16px;
+  flex: none;
+  fill: none;
+  stroke: #525252;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.search-input {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #ffffff;
+  font: inherit;
+  font-size: 14px;
+}
+
+.search-input::placeholder {
+  color: #525252;
+}
+
+.segmented {
+  display: flex;
+  gap: 2px;
+  padding: 3px;
+  border: 1px solid #333333;
+  border-radius: 6px;
+  background: #1e1e1e;
+}
+
+.segment {
+  padding: 6px 12px;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: #a3a3a3;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.segment--active {
+  background: #262626;
+  color: #ffffff;
+}
+
+.segment:focus-visible,
+.status-select:focus-visible {
+  outline: 2px solid #fac738;
+  outline-offset: 2px;
+}
+
+.status-select {
+  height: 36px;
+  padding: 0 12px;
+  border: 1px solid #333333;
+  border-radius: 6px;
+  background: #1e1e1e;
+  color: #e0e0e0;
+  font: inherit;
+  font-size: 13px;
+}
