@@ -90,14 +90,18 @@ export class ProblemsPage {
   });
 
   constructor() {
-    // No distinctUntilChanged: after Clear filters the same term must apply again,
-    // and navigating to identical params is already a no-op.
+    // Compare with the URL, not the previous keystroke: after Clear filters the same term
+    // must apply again, and an unchanged term must not reset the page.
     this.searchInput
       .pipe(
         switchMap((search) => (search === null ? EMPTY : timer(300).pipe(map(() => search)))),
         takeUntilDestroyed(),
       )
-      .subscribe((search) => this.applyFilters({ search }));
+      .subscribe((search) => {
+        if (search !== (this.query().search ?? '')) {
+          this.applyFilters({ search });
+        }
+      });
 
     // A shared or stale link can point past the last page; replace it so Back doesn't loop.
     effect(() => {

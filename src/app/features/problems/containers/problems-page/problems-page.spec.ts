@@ -163,6 +163,19 @@ describe('ProblemsPage', () => {
     expect(input.value).toBe('two ');
   });
 
+  it('should keep the page when the typed text does not change the search', async () => {
+    const harness = await render('/problems?page=2');
+    const input = root(harness).querySelector<HTMLInputElement>('input[type="search"]')!;
+
+    input.focus();
+    input.value = ' ';
+    input.dispatchEvent(new Event('input'));
+    await new Promise((resolve) => setTimeout(resolve, 350));
+    await settle(harness);
+
+    expect(queryParams()).toEqual({ page: '2' });
+  });
+
   it('should not reapply a pending search after Clear filters', async () => {
     const harness = await render('/problems?search=zzz');
     const input = root(harness).querySelector<HTMLInputElement>('input[type="search"]')!;
