@@ -25661,6 +25661,536 @@
           ]
         }
       ]
+    },
+    {
+      "type": "frame",
+      "id": "nR4ha",
+      "x": 5760,
+      "y": 1200,
+      "name": "10 - Login",
+      "width": 1280,
+      "height": 1024,
+      "fill": "$bg",
+      "layout": "vertical",
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "frame",
+          "id": "EuUoS",
+          "name": "Card",
+          "width": 400,
+          "fill": "$surface",
+          "cornerRadius": 12,
+          "stroke": "$border",
+          "strokeWidth": 1,
+          "strokeAlignment": "inner",
+          "layout": "vertical",
+          "gap": 24,
+          "padding": 40,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "q3Ebm",
+              "name": "Brand",
+              "width": 178,
+              "gap": 8,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "k2HGDs",
+                  "name": "Overlay",
+                  "width": 32,
+                  "height": 32,
+                  "fill": "#fac73833",
+                  "cornerRadius": 4,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "XfWBb",
+                      "name": "Container",
+                      "height": 10,
+                      "layout": "vertical",
+                      "children": [
+                        {
+                          "type": "path",
+                          "id": "q2N55Y",
+                          "name": "Icon",
+                          "geometry": "M10.469 8.828l3.867-3.828-3.867-3.828 1.172-1.172 5 5-5 5-1.172-1.172 0 0m-4.297 0l-1.172 1.172-5-5 5-5 1.172 1.172-3.867 3.828 3.867 3.828 0 0",
+                          "viewBox": [
+                            0,
+                            0,
+                            16.640625,
+                            10
+                          ],
+                          "fill": "$accent",
+                          "width": 16.64,
+                          "height": 10
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "sce2M",
+                  "name": "Container",
+                  "height": 28,
+                  "layout": "vertical",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "yCbNH",
+                      "name": "Title",
+                      "fill": "$text-strong",
+                      "content": "BackboneJudge",
+                      "lineHeight": 1.556,
+                      "fontFamily": "Inter",
+                      "fontSize": 18,
+                      "fontWeight": "700",
+                      "letterSpacing": -0.45
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "N7YLPt",
+              "name": "Heading",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 8,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "UX1dO",
+                  "name": "Title",
+                  "fill": "$text-strong",
+                  "content": "Sign in",
+                  "fontFamily": "Inter",
+                  "fontSize": 24,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "SBVby",
+                  "name": "Subtitle",
+                  "fill": "$text-muted",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Use your Google account to solve problems, track your progress and climb the leaderboard.",
+                  "lineHeight": 1.5,
+                  "textAlign": "center",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "yDfCW",
+              "name": "Google Button",
+              "width": "fill_container",
+              "height": 44,
+              "fill": "#ffffff",
+              "cornerRadius": 8,
+              "gap": 12,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "yRNbE",
+                  "name": "Google Logo",
+                  "width": 18,
+                  "height": 18,
+                  "layout": "none",
+                  "children": [
+                    {
+                      "type": "path",
+                      "id": "hwXyH",
+                      "x": 0,
+                      "y": 0,
+                      "geometry": "M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85c-4.16-3.87-9.59-6.25-16.06-6.25-9.38 0-17.49 5.38-21.44 13.22l7.98 6.19c1.89-5.69 7.2-9.91 13.46-9.91z",
+                      "viewBox": [
+                        0,
+                        0,
+                        48,
+                        48
+                      ],
+                      "fill": "#EA4335",
+                      "width": 18,
+                      "height": 18
+                    },
+                    {
+                      "type": "path",
+                      "id": "tfjJp",
+                      "x": 0,
+                      "y": 0,
+                      "geometry": "M46.98 24.55c0-1.57-0.15-3.09-0.38-4.55h-22.6v9.02h12.94c-0.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z",
+                      "viewBox": [
+                        0,
+                        0,
+                        48,
+                        48
+                      ],
+                      "fill": "#4285F4",
+                      "width": 18,
+                      "height": 18
+                    },
+                    {
+                      "type": "path",
+                      "id": "WwS28",
+                      "x": 0,
+                      "y": 0,
+                      "geometry": "M10.53 28.59c-0.48-1.45-0.76-2.99-0.76-4.59s0.27-3.14 0.76-4.59l-7.98-6.19c-1.63 3.24-2.55 6.9-2.55 10.78 0 3.88 0.92 7.54 2.56 10.78l7.97-6.19z",
+                      "viewBox": [
+                        0,
+                        0,
+                        48,
+                        48
+                      ],
+                      "fill": "#FBBC05",
+                      "width": 18,
+                      "height": 18
+                    },
+                    {
+                      "type": "path",
+                      "id": "d4BzF6",
+                      "x": 0,
+                      "y": 0,
+                      "geometry": "M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19c3.96 7.85 12.07 13.23 21.45 13.23z",
+                      "viewBox": [
+                        0,
+                        0,
+                        48,
+                        48
+                      ],
+                      "fill": "#34A853",
+                      "width": 18,
+                      "height": 18
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "I0mvDp",
+                  "name": "Label",
+                  "fill": "#1f1f1f",
+                  "content": "Continue with Google",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "600"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "LsTen",
+              "name": "Privacy Note",
+              "fill": "$text-muted",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "Your name and photo appear on the leaderboard. The rest of your profile stays private.",
+              "lineHeight": 1.5,
+              "textAlign": "center",
+              "fontFamily": "Inter",
+              "fontSize": 12,
+              "fontWeight": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "Y4V3o",
+      "x": 7200,
+      "y": 1200,
+      "name": "11 - Login - Error",
+      "width": 1280,
+      "height": 1024,
+      "fill": "$bg",
+      "layout": "vertical",
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "frame",
+          "id": "exfv5",
+          "name": "Card",
+          "width": 400,
+          "fill": "$surface",
+          "cornerRadius": 12,
+          "stroke": "$border",
+          "strokeWidth": 1,
+          "strokeAlignment": "inner",
+          "layout": "vertical",
+          "gap": 24,
+          "padding": 40,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "xh69l",
+              "name": "Brand",
+              "width": 178,
+              "gap": 8,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "ihB9Q",
+                  "name": "Overlay",
+                  "width": 32,
+                  "height": 32,
+                  "fill": "#fac73833",
+                  "cornerRadius": 4,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "j2KGbq",
+                      "name": "Container",
+                      "height": 10,
+                      "layout": "vertical",
+                      "children": [
+                        {
+                          "type": "path",
+                          "id": "DogCp",
+                          "name": "Icon",
+                          "geometry": "M10.469 8.828l3.867-3.828-3.867-3.828 1.172-1.172 5 5-5 5-1.172-1.172 0 0m-4.297 0l-1.172 1.172-5-5 5-5 1.172 1.172-3.867 3.828 3.867 3.828 0 0",
+                          "viewBox": [
+                            0,
+                            0,
+                            16.640625,
+                            10
+                          ],
+                          "fill": "$accent",
+                          "width": 16.64,
+                          "height": 10
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "tPgc0",
+                  "name": "Container",
+                  "height": 28,
+                  "layout": "vertical",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "whKMk",
+                      "name": "Title",
+                      "fill": "$text-strong",
+                      "content": "BackboneJudge",
+                      "lineHeight": 1.556,
+                      "fontFamily": "Inter",
+                      "fontSize": 18,
+                      "fontWeight": "700",
+                      "letterSpacing": -0.45
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "ND0vp",
+              "name": "Heading",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 8,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "dXONm",
+                  "name": "Title",
+                  "fill": "$text-strong",
+                  "content": "Sign in",
+                  "fontFamily": "Inter",
+                  "fontSize": 24,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "OCZlu",
+                  "name": "Subtitle",
+                  "fill": "$text-muted",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Use your Google account to solve problems, track your progress and climb the leaderboard.",
+                  "lineHeight": 1.5,
+                  "textAlign": "center",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "eEC9N",
+              "name": "Error Alert",
+              "width": "fill_container",
+              "fill": "#ef44441a",
+              "cornerRadius": 8,
+              "stroke": "#ef444466",
+              "strokeWidth": 1,
+              "strokeAlignment": "inner",
+              "gap": 8,
+              "padding": 12,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "S04ZMQ",
+                  "name": "Alert Icon",
+                  "width": 16,
+                  "height": 16,
+                  "icon": "circle-alert",
+                  "library": "lucide",
+                  "fill": "$error"
+                },
+                {
+                  "type": "text",
+                  "id": "HE1Ly",
+                  "name": "Message",
+                  "fill": "#fca5a5",
+                  "content": "Couldn’t sign in with Google. Try again.",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "hBTPy",
+              "name": "Google Button",
+              "width": "fill_container",
+              "height": 44,
+              "fill": "#ffffff",
+              "cornerRadius": 8,
+              "gap": 12,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "dku8c",
+                  "name": "Google Logo",
+                  "width": 18,
+                  "height": 18,
+                  "layout": "none",
+                  "children": [
+                    {
+                      "type": "path",
+                      "id": "MJ8d6",
+                      "x": 0,
+                      "y": 0,
+                      "geometry": "M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85c-4.16-3.87-9.59-6.25-16.06-6.25-9.38 0-17.49 5.38-21.44 13.22l7.98 6.19c1.89-5.69 7.2-9.91 13.46-9.91z",
+                      "viewBox": [
+                        0,
+                        0,
+                        48,
+                        48
+                      ],
+                      "fill": "#EA4335",
+                      "width": 18,
+                      "height": 18
+                    },
+                    {
+                      "type": "path",
+                      "id": "zFjmM",
+                      "x": 0,
+                      "y": 0,
+                      "geometry": "M46.98 24.55c0-1.57-0.15-3.09-0.38-4.55h-22.6v9.02h12.94c-0.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z",
+                      "viewBox": [
+                        0,
+                        0,
+                        48,
+                        48
+                      ],
+                      "fill": "#4285F4",
+                      "width": 18,
+                      "height": 18
+                    },
+                    {
+                      "type": "path",
+                      "id": "KPX7L",
+                      "x": 0,
+                      "y": 0,
+                      "geometry": "M10.53 28.59c-0.48-1.45-0.76-2.99-0.76-4.59s0.27-3.14 0.76-4.59l-7.98-6.19c-1.63 3.24-2.55 6.9-2.55 10.78 0 3.88 0.92 7.54 2.56 10.78l7.97-6.19z",
+                      "viewBox": [
+                        0,
+                        0,
+                        48,
+                        48
+                      ],
+                      "fill": "#FBBC05",
+                      "width": 18,
+                      "height": 18
+                    },
+                    {
+                      "type": "path",
+                      "id": "emWVU",
+                      "x": 0,
+                      "y": 0,
+                      "geometry": "M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19c3.96 7.85 12.07 13.23 21.45 13.23z",
+                      "viewBox": [
+                        0,
+                        0,
+                        48,
+                        48
+                      ],
+                      "fill": "#34A853",
+                      "width": 18,
+                      "height": 18
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "vTSdJ",
+                  "name": "Label",
+                  "fill": "#1f1f1f",
+                  "content": "Continue with Google",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "600"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "R6RkX",
+              "name": "Privacy Note",
+              "fill": "$text-muted",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "Your name and photo appear on the leaderboard. The rest of your profile stays private.",
+              "lineHeight": 1.5,
+              "textAlign": "center",
+              "fontFamily": "Inter",
+              "fontSize": 12,
+              "fontWeight": "normal"
+            }
+          ]
+        }
+      ]
     }
   ],
   "variables": {
