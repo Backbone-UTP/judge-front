@@ -1,4 +1,12 @@
-import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  effect,
+  type ElementRef,
+  input,
+  output,
+  viewChild,
+} from '@angular/core';
 
 import type { Difficulty, ProblemStatus } from '../../../../core/progress/types/progress.types';
 import { DIFFICULTY_LABELS, STATUS_LABELS } from '../../problems.labels';
@@ -26,6 +34,21 @@ export class ProblemsToolbar {
     })),
   ];
   protected readonly statusOptions = Object.entries(STATUS_LABELS) as [ProblemStatus, string][];
+
+  private readonly searchInput = viewChild.required<ElementRef<HTMLInputElement>>('searchInput');
+
+  constructor() {
+    // Sync the box with the URL only while the user isn't typing in it; otherwise the
+    // trimmed term would erase a trailing space or keys pressed during the navigation.
+    // ponytail: focus is the "typing" signal; Back/Forward with the box focused won't sync.
+    effect(() => {
+      const search = this.search();
+      const element = this.searchInput().nativeElement;
+      if (element.ownerDocument.activeElement !== element) {
+        element.value = search;
+      }
+    });
+  }
 
   protected onStatus(value: string): void {
     this.statusChange.emit((value || undefined) as ProblemStatus | undefined);

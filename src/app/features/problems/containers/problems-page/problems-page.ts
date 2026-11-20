@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import { rxResource, takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router, type ParamMap } from '@angular/router';
-import { debounceTime, map, Subject } from 'rxjs';
+import { EMPTY, map, Subject, switchMap, timer } from 'rxjs';
 
 import { ProblemsRepository } from '../../../../core/progress/data-access/progress.repositories';
 import type {
@@ -45,7 +45,8 @@ export class ProblemsPage {
   private readonly repository = inject(ProblemsRepository);
   private readonly router = inject(Router);
   private readonly route = inject(ActivatedRoute);
-  private readonly searchInput = new Subject<string>();
+  /** `null` cancels a pending search. */
+  private readonly searchInput = new Subject<string | null>();
 
   protected readonly difficulties = DIFFICULTIES;
   protected readonly difficultyLabels = DIFFICULTY_LABELS;
@@ -92,7 +93,10 @@ export class ProblemsPage {
     // No distinctUntilChanged: after Clear filters the same term must apply again,
     // and navigating to identical params is already a no-op.
     this.searchInput
-      .pipe(debounceTime(300), takeUntilDestroyed())
+      .pipe(
+        switchMap((search) => (search === null ? EMPTY : timer(300).pipe(map(() => search)))),
+        takeUntilDestroyed(),
+      )
       .subscribe((search) => this.applyFilters({ search }));
 
     // A shared or stale link can point past the last page; replace it so Back doesn't loop.
@@ -118,6 +122,7 @@ export class ProblemsPage {
   }
 
   clearFilters(): void {
+    this.searchInput.next(null);
     this.navigate({});
   }
 

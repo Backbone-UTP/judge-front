@@ -5,11 +5,11 @@
       <path d="m21 21-4.3-4.3" />
     </svg>
     <input
+      #searchInput
       type="search"
       class="search-input"
       placeholder="Search problems by title"
       aria-label="Search problems by title"
-      [value]="search()"
       (input)="searchChange.emit($any($event.target).value)"
     />
   </label>

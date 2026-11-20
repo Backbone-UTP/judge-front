@@ -149,6 +149,34 @@ describe('ProblemsPage', () => {
     expect(queryParams()).toEqual({ search: 'zzz' });
   });
 
+  it('should keep what the user is typing when the debounced search lands', async () => {
+    const harness = await render();
+    const input = root(harness).querySelector<HTMLInputElement>('input[type="search"]')!;
+
+    input.focus();
+    input.value = 'two ';
+    input.dispatchEvent(new Event('input'));
+    await new Promise((resolve) => setTimeout(resolve, 350));
+    await settle(harness);
+
+    expect(queryParams()).toEqual({ search: 'two' });
+    expect(input.value).toBe('two ');
+  });
+
+  it('should not reapply a pending search after Clear filters', async () => {
+    const harness = await render('/problems?search=zzz');
+    const input = root(harness).querySelector<HTMLInputElement>('input[type="search"]')!;
+
+    input.value = 'zzzz';
+    input.dispatchEvent(new Event('input'));
+    buttonNamed(harness, 'Clear filters').click();
+    await new Promise((resolve) => setTimeout(resolve, 350));
+    await settle(harness);
+
+    expect(queryParams()).toEqual({});
+    expect(input.value).toBe('');
+  });
+
   it('should move an out-of-range page to the last page', async () => {
     const harness = await render('/problems?page=99');
     await settle(harness);
