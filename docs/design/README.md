@@ -28,6 +28,21 @@ Referencia visual para los issues de front. Si tu issue tiene una sección **Dis
 
 Todas las pantallas son desktop a 1280 px. Mobile se resuelve en CSS y se valida en el PR.
 
+## Reglas de progreso y competencia
+
+Aplican a la lista de ejercicios, el leaderboard y el perfil.
+
+| Tema        | Regla                                                                                                                                                                 |
+| ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Puntos      | Solo el primer `Accepted` de cada problema suma: Easy 10, Medium 25, Hard 50. Desbloquear pistas descuenta puntos.                                                    |
+| Racha       | Un día cuenta si tiene al menos un `Accepted`, en hora `America/Bogota`. No hay freeze.                                                                               |
+| Temporadas  | Las define un maintainer (semestre, competencia, festividad). Pueden estar activas varias a la vez. Todos participan. Solo suman los `Accepted` dentro de su ventana. |
+| Insignias   | Permanentes: primer Accepted, 10/50/100 resueltos, primer Hard, rachas de 7/30/100 días. De temporada: Top 1, Top 3, Top 10 al cierre, y Participante.                |
+| Leaderboard | Pestañas Temporada (por defecto, la activa más reciente) e Histórico. Filtros por universidad y grupo. Top 50 más tu posición.                                        |
+| Privacidad  | El perfil solo lo ve su dueño. Lo único público es lo del leaderboard: posición, avatar, nombre, grupo, puntos y resueltos.                                           |
+| Perfil      | Se edita nombre, universidad y grupo (estos dos desde listas cerradas). La foto viene de Google.                                                                      |
+| Lista       | Búsqueda por título, filtros de dificultad y estado (Resuelto / Intentado / Pendiente), paginación de 20.                                                             |
+
 ## Tokens
 
 | Token            | Valor     | Uso                                      |
