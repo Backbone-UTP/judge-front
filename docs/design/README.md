@@ -24,7 +24,7 @@ Referencia visual para los issues de front. Si tu issue tiene una sección **Dis
 | [08-profile](screens/08-profile.png)                             | `08 - Profile`                     | Perfil (identidad, racha, insignias, submissions) |
 | [09-profile-edit](screens/09-profile-edit.png)                   | `09 - Profile Edit`                | Editar perfil                                     |
 | [10-login](screens/10-login.png)                                 | `10 - Login`                       | Login con Google                                  |
-| [11-login-error](screens/11-login-error.png)                     | `11 - Login - Error`               | Login con Google                                  |
+| [11-login-error](screens/11-login-error.png)                     | `11 - Login - Error`               | Login con Google (error)                          |
 | [app-header](screens/app-header.png)                             | componente `App Header`            | App shell                                         |
 | [avatar-menu](screens/avatar-menu.png)                           | componente `Avatar Menu`           | App shell                                         |
 
