@@ -1,0 +1,154 @@
+:host {
+  display: block;
+  min-height: 100dvh;
+  background: #0a0a0a;
+  color: #e0e0e0;
+  font-family: Inter, system-ui, sans-serif;
+}
+
+.problems-page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 1184px;
+  margin: 0 auto;
+  padding: 32px 48px;
+}
+
+.page-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.page-title {
+  margin: 0 0 6px;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.4px;
+  color: #ffffff;
+}
+
+.page-subtitle {
+  margin: 0;
+  font-size: 14px;
+  color: #a3a3a3;
+}
+
+.progress {
+  display: flex;
+  gap: 20px;
+}
+
+.progress-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.progress-value {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.progress-label {
+  font-size: 12px;
+  color: #a3a3a3;
+}
+
+.difficulty-easy {
+  color: #10b981;
+}
+
+.difficulty-medium {
+  color: #fac738;
+}
+
+.difficulty-hard {
+  color: #ef4444;
+}
+
+.state-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 32px 16px;
+  border: 1px dashed #333333;
+  border-radius: 8px;
+  color: #a3a3a3;
+  font-size: 14px;
+}
+
+.state-message p {
+  margin: 0;
+}
+
+.secondary-button,
+.page-button {
+  min-height: 32px;
+  padding: 0 12px;
+  border: 1px solid #333333;
+  border-radius: 6px;
+  background: transparent;
+  color: #e0e0e0;
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.secondary-button:hover,
+.page-button:hover:not(:disabled) {
+  border-color: #525252;
+}
+
+.secondary-button:focus-visible,
+.page-button:focus-visible {
+  outline: 2px solid #fac738;
+  outline-offset: 2px;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.pagination-summary {
+  margin: 0;
+  font-size: 13px;
+  color: #a3a3a3;
+}
+
+.pagination-pages {
+  display: flex;
+  gap: 4px;
+}
+
+.page-button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.page-button--current {
+  border-color: #fac738;
+  background: #fac738;
+  color: #0a0a0a;
+  font-weight: 600;
+}
+
+@media (max-width: 720px) {
+  .problems-page {
+    padding: 24px 16px;
+  }
+
+  .page-header,
+  .pagination {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

@@ -25,6 +25,12 @@ export const routes: Routes = [
       ),
   },
   {
+    path: 'problems',
+    canMatch: [authenticatedGuard],
+    loadChildren: () =>
+      import('./features/problems/problems.routes').then((module) => module.problemsRoutes),
+  },
+  {
     path: '**',
     redirectTo: 'challenge-workspace',
   },

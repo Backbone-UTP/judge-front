@@ -1,0 +1,129 @@
+:host {
+  display: block;
+  overflow-x: auto;
+  border: 1px solid #333333;
+  border-radius: 8px;
+  background: #1e1e1e;
+}
+
+.problems-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+th {
+  height: 40px;
+  padding: 0 20px;
+  background: #262626;
+  color: #a3a3a3;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.6px;
+  text-align: left;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+td {
+  height: 48px;
+  padding: 0 20px;
+  border-top: 1px solid #333333;
+  white-space: nowrap;
+}
+
+.col-status {
+  width: 72px;
+}
+
+.col-end {
+  text-align: right;
+}
+
+.mono {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 13px;
+}
+
+.muted {
+  color: #737373;
+}
+
+.problem-link {
+  color: #ffffff;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.problem-link:hover {
+  color: #fac738;
+}
+
+.problem-link:focus-visible {
+  outline: 2px solid #fac738;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.status-icon {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vertical-align: middle;
+}
+
+.status-solved {
+  stroke: #10b981;
+}
+
+.status-attempted {
+  stroke: #fac738;
+}
+
+.status-todo {
+  stroke: #525252;
+}
+
+.difficulty-easy {
+  color: #10b981;
+}
+
+.difficulty-medium {
+  color: #fac738;
+}
+
+.difficulty-hard {
+  color: #ef4444;
+}
+
+.skeleton {
+  display: block;
+  height: 12px;
+  border-radius: 4px;
+  background: #262626;
+  animation: pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton {
+    animation: none;
+  }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

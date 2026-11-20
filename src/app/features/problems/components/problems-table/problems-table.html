@@ -1,0 +1,61 @@
+<table class="problems-table" [attr.aria-busy]="loading()">
+  <caption class="visually-hidden">
+    Problems
+  </caption>
+  <thead>
+    <tr>
+      <th scope="col" class="col-status">Status</th>
+      <th scope="col">Title</th>
+      <th scope="col" class="col-end">Difficulty</th>
+      <th scope="col" class="col-end">Points</th>
+      <th scope="col" class="col-end">Acceptance</th>
+    </tr>
+  </thead>
+  <tbody>
+    @if (loading()) {
+      @for (row of skeletonRows; track row) {
+        <tr class="skeleton-row" aria-hidden="true">
+          <td colspan="5"><span class="skeleton"></span></td>
+        </tr>
+      }
+    } @else {
+      @for (problem of problems(); track problem.id) {
+        <tr>
+          <td class="col-status">
+            <svg
+              class="status-icon status-{{ problem.status }}"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <circle cx="12" cy="12" r="10" />
+              @switch (problem.status) {
+                @case ('solved') {
+                  <path d="m9 12 2 2 4-4" />
+                }
+                @case ('attempted') {
+                  <circle cx="12" cy="12" r="1" />
+                }
+              }
+            </svg>
+            <span class="visually-hidden">{{ statusLabels[problem.status] }}</span>
+          </td>
+          <td>
+            <a
+              class="problem-link"
+              routerLink="/challenge-workspace"
+              [queryParams]="{ problem: problem.id }"
+              >{{ problem.title }}</a
+            >
+          </td>
+          <td class="col-end difficulty-{{ problem.difficulty }}">
+            {{ difficultyLabels[problem.difficulty] }}
+          </td>
+          <td class="col-end mono" [class.muted]="problem.status === 'solved'">
+            +{{ problem.points }}
+          </td>
+          <td class="col-end mono muted">{{ (problem.acceptanceRate * 100).toFixed(1) }}%</td>
+        </tr>
+      }
+    }
+  </tbody>
+</table>
