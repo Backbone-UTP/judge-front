@@ -1,0 +1,44 @@
+<header class="challenge-header">
+  <div class="title-container">
+  <h1>
+    {{ challenge().title }}
+  </h1>
+  </div>
+  <div class="challenge-meta">
+
+        <span
+  class="difficulty"
+  [class.Easy]="challenge().difficulty === 'Easy'"
+  [class.Medium]="challenge().difficulty === 'Medium'"
+  [class.Hard]="challenge().difficulty === 'Hard'">
+
+  {{ challenge().difficulty ?? 'Unknown' }}
+
+</span>
+
+
+    <span class="meta-itemacceptance">
+        <img
+          src="/icons/challenge-header/check.png"
+          alt="accepted">
+      {{ formatCount(challenge().acceptanceCount) }}
+    </span>
+
+    <span class="meta-itemengagement">
+        <img
+          src="/icons/challenge-header/x.png"
+          alt="engagement">
+
+      {{ formatCount(challenge().engagement) }}
+    </span>
+
+    <span class="author">
+        <img
+        src="/icons/challenge-header/author.png"
+        alt="author">
+      {{ challenge().author ?? 'Unknown' }}
+    </span>
+
+  </div>
+
+</header>

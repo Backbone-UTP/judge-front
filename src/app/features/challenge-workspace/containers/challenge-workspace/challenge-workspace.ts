@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, inject, input, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, signal, inject } from '@angular/core';
+import { ChallengeHeader } from '../../components/challenge-header/challenge-header';
 
 import { ConstraintsList } from '../../components/constraints-list/constraints-list';
 import { ExampleBlock } from '../../components/example-block/example-block';
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-challenge-workspace',
-  imports: [ConstraintsList, ExampleBlock, ChallengeTabs],
+  imports: [ConstraintsList, ExampleBlock, ChallengeTabs, ChallengeHeader],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './challenge-workspace.html',
   styleUrl: './challenge-workspace.css',
